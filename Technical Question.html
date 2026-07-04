@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Technical Question Round</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7b5cff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --correct:#c8f7dc;
+  --wrong:#ffd6d6;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);}
+header{text-align:center;padding:35px;}
+header h1{color:var(--primary);}
+.container{max-width:1000px;margin:auto;padding:20px;}
+.filter{display:flex;justify-content:space-between;margin-bottom:20px;}
+select{padding:10px;border-radius:10px;}
+.card{background:#fff;padding:30px;border-radius:20px;box-shadow:0 15px 30px rgba(123,92,255,.15);}
+.level{color:var(--primary);font-weight:600;}
+.question{font-size:20px;margin:15px 0;}
+.options label{
+  display:block;padding:12px;margin-bottom:10px;
+  background:#f1eeff;border-radius:10px;cursor:pointer;
+}
+.correct{background:var(--correct)!important;}
+.wrong{background:var(--wrong)!important;}
+.buttons{margin-top:20px;display:flex;gap:15px;}
+button{padding:12px 22px;border:none;border-radius:10px;cursor:pointer;}
+.primary{background:var(--primary);color:#fff;}
+.secondary{background:#e7e3ff;color:var(--primary);}
+.result{display:none;text-align:center;padding:40px;}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Technical Questions Practice</h1>
+  <p>Answer all questions and submit to see your score</p>
+</header>
+
+<div class="container">
+
+  <div class="filter">
+    <h2>Questions</h2>
+    <select id="levelSelect" onchange="resetTest()">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+  </div>
+
+  <div class="card" id="quizCard">
+    <div class="level" id="levelText"></div>
+    <div class="question" id="questionText"></div>
+    <div class="options" id="optionsBox"></div>
+
+    <div class="buttons">
+      <button class="secondary" onclick="prevQuestion()">Previous</button>
+      <button class="secondary" onclick="nextQuestion()">Next</button>
+      <button class="primary" onclick="submitTest()">Submit Test</button>
+    </div>
+  </div>
+
+  <div class="card result" id="resultBox">
+    <h2>Test Completed 🎉</h2>
+    <p id="scoreText"></p>
+    <button class="primary" onclick="resetTest()">Retake Test</button>
+  </div>
+</div>
+
+<script>
+/* ================= QUESTIONS ================= */
+const data = {
+beginner:[
+{q:"What does HTML stand for?",o:["Hyper Text Markup Language","High Text Machine Language","Hyperlinks Text Mark Language"],a:"Hyper Text Markup Language"},
+{q:"Which tag is used for hyperlinks?",o:["&lt;a&gt;","&lt;link&gt;","&lt;href&gt;"],a:"<a>"},
+{q:"What does CSS stand for?",o:["Cascading Style Sheets","Creative Style System","Computer Style Sheet"],a:"Cascading Style Sheets"},
+{q:"Which property changes text color?",o:["color","font-color","text-style"],a:"color"},
+{q:"What is JavaScript?",o:["Programming language","Database","Operating system"],a:"Programming language"},
+{q:"Which keyword declares a variable?",o:["var","define","int"],a:"var"},
+{q:"What is an array?",o:["Collection of elements","Single value","Function"],a:"Collection of elements"},
+{q:"What is a function?",o:["Reusable code block","Variable","Loop"],a:"Reusable code block"},
+{q:"What does console.log do?",o:["Print output","Stop code","Run loop"],a:"Print output"},
+{q:"What is DOM?",o:["Document Object Model","Data Object Method","Design Oriented Model"],a:"Document Object Model"},
+{q:"Which loop runs at least once?",o:["do-while","for","while"],a:"do-while"},
+{q:"What is Boolean?",o:["true/false","number","string"],a:"true/false"},
+{q:"What is responsive design?",o:["Adapts to screen","Only desktop","Only mobile"],a:"Adapts to screen"},
+{q:"Which tag is used for images?",o:["&lt;img&gt;","&lt;image&gt;","&lt;pic&gt;"],a:"<img>"},
+{q:"What does &lt;br&gt; do?",o:["Line break","Bold","Italic"],a:"Line break"},
+{q:"What is inline CSS?",o:["CSS in tag","External file","JS code"],a:"CSS in tag"},
+{q:"What does id attribute mean?",o:["Unique identifier","Group name","Style name"],a:"Unique identifier"},
+{q:"Which input type hides text?",o:["password","text","hidden"],a:"password"},
+{q:"Which symbol is used for comments?",o:["//","##","**"],a:"//"},
+{q:"What does === check?",o:["Value & type","Only value","Only type"],a:"Value & type"},
+{q:"Which tag is semantic?",o:["&lt;article&gt;","&lt;div&gt;","&lt;span&gt;"],a:"<article>"},
+{q:"What is viewport?",o:["Screen area","Database","Function"],a:"Screen area"},
+{q:"What does alert() do?",o:["Popup","Log","Loop"],a:"Popup"},
+{q:"What is a loop?",o:["Repeats code","Stores value","Stops execution"],a:"Repeats code"},
+{q:"What is external CSS?",o:["Separate CSS file","Inline CSS","JS style"],a:"Separate CSS file"}
+],
+
+intermediate:[
+{q:"Difference between let and var?",o:["Block vs Function scope","Same","var block scope"],a:"Block vs Function scope"},
+{q:"What is hoisting?",o:["Move declarations up","Delete code","Optimize code"],a:"Move declarations up"},
+{q:"What is closure?",o:["Function with memory","Loop","Class"],a:"Function with memory"},
+{q:"What is JSON?",o:["JavaScript Object Notation","Java Syntax Object","Joint System Output"],a:"JavaScript Object Notation"},
+{q:"What is REST?",o:["Representational State Transfer","Remote State Tech","Relational Structure"],a:"Representational State Transfer"},
+{q:"What is promise?",o:["Future value","Loop","Condition"],a:"Future value"},
+{q:"What is async/await?",o:["Async handling","Loop","Condition"],a:"Async handling"},
+{q:"What is localStorage?",o:["Browser storage","Server DB","Cache"],a:"Browser storage"},
+{q:"What is API?",o:["Interface","Algorithm","Array"],a:"Interface"},
+{q:"GET vs POST?",o:["Fetch vs Send","Same","Update only"],a:"Fetch vs Send"},
+{q:"What is CORS?",o:["Cross-origin policy","Security bug","API error"],a:"Cross-origin policy"},
+{q:"What is MVC?",o:["Architecture","Language","Framework"],a:"Architecture"},
+{q:"What is Git?",o:["Version control","IDE","Server"],a:"Version control"},
+{q:"What is SQL?",o:["Structured Query Language","Simple Query Language","Server Query"],a:"Structured Query Language"},
+{q:"What is NoSQL?",o:["Non-relational DB","New SQL","Old SQL"],a:"Non-relational DB"},
+{q:"What is middleware?",o:["Between request & response","Frontend","DB"],a:"Between request & response"},
+{q:"What is JWT?",o:["Token","Cookie","Session"],a:"Token"},
+{q:"What is debounce?",o:["Limit calls","Loop","Delay"],a:"Limit calls"},
+{q:"What is throttle?",o:["Control execution","Pause JS","Stop loop"],a:"Control execution"},
+{q:"What is event delegation?",o:["Parent handling","Child handling","Inline"],a:"Parent handling"},
+{q:"What is WebSocket?",o:["Two-way communication","HTTP only","DB"],a:"Two-way communication"},
+{q:"What is callback?",o:["Function as argument","Loop","Condition"],a:"Function as argument"},
+{q:"What is map()?",o:["Transform array","Filter array","Loop"],a:"Transform array"},
+{q:"What is filter()?",o:["Filter elements","Map data","Reduce"],a:"Filter elements"},
+{q:"What is reduce()?",o:["Reduce to value","Filter data","Map array"],a:"Reduce to value"}
+],
+
+advanced:[
+{q:"What is time complexity?",o:["Execution time","Memory","CPU"],a:"Execution time"},
+{q:"Big-O notation?",o:["Growth rate","Exact time","Memory"],a:"Growth rate"},
+{q:"Binary search complexity?",o:["O(log n)","O(n)","O(n²)"],a:"O(log n)"},
+{q:"What is recursion?",o:["Function calls itself","Loop","Condition"],a:"Function calls itself"},
+{q:"What is stack?",o:["LIFO","FIFO","Random"],a:"LIFO"},
+{q:"What is queue?",o:["FIFO","LIFO","Tree"],a:"FIFO"},
+{q:"What is hash table?",o:["Key-value","List","Stack"],a:"Key-value"},
+{q:"What is BFS?",o:["Level order","Depth","Random"],a:"Level order"},
+{q:"What is DFS?",o:["Depth traversal","Level","Random"],a:"Depth traversal"},
+{q:"What is dynamic programming?",o:["Reuse results","Loop","Recursion"],a:"Reuse results"},
+{q:"What is memoization?",o:["Cache result","Delete result","Sort"],a:"Cache result"},
+{q:"What is deadlock?",o:["Resource wait","CPU overload","Crash"],a:"Resource wait"},
+{q:"What is multithreading?",o:["Parallel tasks","Single task","Blocking"],a:"Parallel tasks"},
+{q:"What is scalability?",o:["Handle growth","Design","Memory"],a:"Handle growth"},
+{q:"What is load balancing?",o:["Distribute traffic","Store cache","Encrypt"],a:"Distribute traffic"},
+{q:"What is caching?",o:["Store for speed","Delete data","Compress"],a:"Store for speed"},
+{q:"What is microservices?",o:["Small services","Monolith","Library"],a:"Small services"},
+{q:"What is rate limiting?",o:["Restrict requests","Speed up","Cache"],a:"Restrict requests"},
+{q:"What is garbage collection?",o:["Free memory","Allocate memory","Leak"],a:"Free memory"},
+{q:"What is memory leak?",o:["Unused memory","CPU issue","Disk"],a:"Unused memory"},
+{q:"What is CAP theorem?",o:["Consistency Availability Partition","Security","Sorting"],a:"Consistency Availability Partition"},
+{q:"What is eventual consistency?",o:["Delayed sync","Immediate sync","No sync"],a:"Delayed sync"},
+{q:"What is system design?",o:["Architecture planning","Coding","Testing"],a:"Architecture planning"},
+{q:"What is load testing?",o:["Stress test","UI test","Unit test"],a:"Stress test"},
+{q:"What is CDN?",o:["Content Delivery Network","Central Data Node","Code Dev Net"],a:"Content Delivery Network"}
+]
+};
+
+/* ================= LOGIC ================= */
+let level="beginner", index=0, score=0;
+let userAnswers={};
+
+function loadQuestion(){
+  const q=data[level][index];
+  levelText.innerText=`${level.toUpperCase()} (${index+1}/25)`;
+  questionText.innerText=q.q;
+  optionsBox.innerHTML="";
+  q.o.forEach(opt=>{
+    const l=document.createElement("label");
+    l.textContent=opt;
+    l.onclick=()=>selectAnswer(l,opt);
+    optionsBox.appendChild(l);
+    if(userAnswers[index]) markAnswers(q.a);
+  });
+}
+
+function selectAnswer(label,selected){
+  if(userAnswers[index]) return;
+  userAnswers[index]=selected;
+  if(selected===data[level][index].a) score++;
+  markAnswers(data[level][index].a);
+}
+
+function markAnswers(correct){
+  document.querySelectorAll(".options label").forEach(l=>{
+    if(l.textContent===correct) l.classList.add("correct");
+    if(userAnswers[index] && l.textContent===userAnswers[index] && l.textContent!==correct)
+      l.classList.add("wrong");
+  });
+}
+
+function nextQuestion(){ if(index<24){index++;loadQuestion();}}
+function prevQuestion(){ if(index>0){index--;loadQuestion();}}
+
+function submitTest(){
+  quizCard.style.display="none";
+  resultBox.style.display="block";
+  scoreText.innerText=`Your Score: ${score} / 25`;
+}
+
+function resetTest(){
+  level=levelSelect.value;
+  index=0; score=0; userAnswers={};
+  quizCard.style.display="block";
+  resultBox.style.display="none";
+  loadQuestion();
+}
+resetTest();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aptitude Round | Theory MCQ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{min-height:100vh;background:linear-gradient(135deg,#ede9f8 0%,#e4dff5 50%,#ede9f8 100%);display:flex;align-items:center;justify-content:center;padding:20px}
+.back-btn{position:fixed;top:16px;left:16px;padding:10px 22px;border-radius:30px;background:rgba(255,255,255,.95);border:2px solid #c4b5fd;color:#6d28d9;font-weight:600;cursor:pointer;z-index:999;font-size:14px;box-shadow:0 2px 10px rgba(109,40,217,.12)}
+.timer-bar{position:fixed;top:0;left:0;right:0;height:5px;background:#ede9fe;z-index:1000}
+.timer-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#4f46e5);transition:width 1s linear}
+.timer-badge{position:fixed;top:12px;right:16px;background:#fff;border:2px solid #c4b5fd;color:#7c3aed;font-weight:700;font-size:13px;padding:5px 15px;border-radius:20px;z-index:999;box-shadow:0 2px 8px rgba(109,40,217,.1)}
+.card{width:100%;max-width:850px;background:#fff;border-radius:28px;padding:40px;box-shadow:0 20px 60px rgba(109,40,217,.14),0 4px 20px rgba(109,40,217,.06)}
+.hdr{text-align:center;margin-bottom:24px}
+.hdr h1{color:#5b21b6;font-size:28px;font-weight:700}
+.hdr p{color:#9ca3af;font-size:13px;margin-top:4px}
+.prog-wrap{width:100%;height:8px;background:#ede9fe;border-radius:10px;margin-bottom:16px;overflow:hidden}
+.prog-inner{height:100%;background:linear-gradient(90deg,#7c3aed,#4f46e5);border-radius:10px;transition:width .5s}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.meta-l{font-size:13px;font-weight:700;color:#6d28d9}
+.meta-m{font-size:13px;font-weight:700;background:#ede9fe;color:#5b21b6;padding:5px 14px;border-radius:20px}
+.meta-r{font-size:12px;color:#9ca3af}
+.q-box{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-left:5px solid #7c3aed;border-radius:16px;padding:22px;margin-bottom:20px}
+.q-lbl{font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.q-txt{font-size:17px;font-weight:600;color:#1e1b4b;line-height:1.65}
+.opts{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.opt{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:14px;border:2.5px solid #e5e7eb;cursor:pointer;font-size:15px;color:#374151;font-weight:500;background:#fff;transition:all .18s}
+.opt:hover{border-color:#a78bfa;background:#f5f3ff;transform:translateX(4px)}
+.badge{width:32px;height:32px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6b7280;flex-shrink:0}
+.opt.chosen{border-color:#7c3aed;background:#ede9fe}
+.opt.chosen .badge{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff}
+.opt.locked{cursor:default;pointer-events:none}
+.opt.locked:hover{transform:none}
+.opt.faded{opacity:0.5}
+.btn-submit{width:100%;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;transition:.25s;letter-spacing:.3px}
+.btn-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 28px rgba(109,40,217,.4)}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed}
+.btn-next{width:100%;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#059669,#047857);color:#fff;transition:.25s;margin-top:10px;display:none}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(5,150,105,.3)}
+.loading-box{text-align:center;padding:50px 20px}
+.spin{width:48px;height:48px;border:4px solid #ede9fe;border-top-color:#7c3aed;border-radius:50%;animation:sp 1s linear infinite;margin:0 auto 20px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading-box p{color:#7c3aed;font-size:16px;font-weight:600}
+.loading-box small{color:#9ca3af;font-size:13px;display:block;margin-top:6px}
+.sum-box{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-radius:18px;margin-bottom:16px;display:none}
+.sum-pct{font-size:72px;font-weight:700;color:#5b21b6;line-height:1}
+.sum-grade{font-size:17px;font-weight:700;margin-top:10px;color:#7c3aed}
+.sum-detail{font-size:14px;color:#6b7280;margin-top:8px}
+.btn-cont{width:100%;padding:15px;border-radius:14px;border:none;font-size:15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;transition:.25s;display:none;margin-bottom:20px}
+.btn-cont:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(109,40,217,.4)}
+/* Review */
+.review-box{display:none;margin-top:8px}
+.review-title{font-size:18px;font-weight:700;color:#5b21b6;margin-bottom:16px;text-align:center;padding-bottom:12px;border-bottom:2px solid #ede9fe}
+.review-item{border-radius:14px;padding:18px;margin-bottom:14px;border:2px solid #e5e7eb;background:#fff}
+.review-item.ri-correct{border-color:#16a34a;background:#f0fdf4}
+.review-item.ri-wrong{border-color:#dc2626;background:#fef2f2}
+.review-item.ri-timeout{border-color:#f59e0b;background:#fffbeb}
+.review-q-num{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.review-q{font-size:14px;font-weight:600;color:#1e1b4b;margin-bottom:10px;line-height:1.5}
+.review-opts-grid{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+.roption{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;font-size:13px;font-weight:500;color:#374151;border:2px solid transparent;background:#f9fafb}
+.roption.rcorrect{border-color:#16a34a;background:#dcfce7;color:#15803d;font-weight:700}
+.roption.rselected-wrong{border-color:#dc2626;background:#fee2e2;color:#dc2626}
+.rbadge{width:24px;height:24px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#6b7280;flex-shrink:0}
+.roption.rcorrect .rbadge{background:#16a34a;color:#fff}
+.roption.rselected-wrong .rbadge{background:#dc2626;color:#fff}
+.rstatus{font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-top:6px}
+.rstatus.s-correct{background:#dcfce7;color:#15803d}
+.rstatus.s-wrong{background:#fee2e2;color:#dc2626}
+.rstatus.s-timeout{background:#fef3c7;color:#92400e}
+</style>
+</head>
+<body>
+
+<div class="timer-bar"><div class="timer-fill" id="TF"></div></div>
+<div class="timer-badge" id="TN">⏱ 30s</div>
+<button class="back-btn" onclick="if(confirm('Exit?')) window.location.href='select.html'">← Back</button>
+
+<div class="card">
+  <div class="hdr">
+    <h1>🧮 Aptitude Round</h1>
+    <p>Theory & Concepts — Test your knowledge</p>
+  </div>
+
+  <div class="prog-wrap"><div class="prog-inner" id="PB" style="width:0%"></div></div>
+
+  <div class="meta">
+    <span class="meta-l" id="QC">Question 1 of 10</span>
+    <span class="meta-m" id="SC">✓ 0 / 0</span>
+    <span class="meta-r" id="RL">—</span>
+  </div>
+
+  <div id="LD" class="loading-box">
+    <div class="spin"></div>
+    <p>Generating theory questions...</p>
+    <small>Powered by Gemini AI 🤖</small>
+  </div>
+
+  <div id="QZ" style="display:none">
+    <div class="q-box">
+      <div class="q-lbl">Question <span id="QN">1</span> of <span id="QT">10</span></div>
+      <div class="q-txt" id="QX">—</div>
+    </div>
+    <div class="opts" id="OB"></div>
+    <button class="btn-submit" id="BS" onclick="doSubmit()" disabled>✓ Confirm Answer</button>
+    <button class="btn-next" id="BN" onclick="doNext()">Next →</button>
+  </div>
+
+  <div class="sum-box" id="SB">
+    <div class="sum-pct" id="SP">—</div>
+    <div class="sum-grade" id="SG">—</div>
+    <div class="sum-detail" id="SD">—</div>
+  </div>
+  <button class="btn-cont" id="BC" onclick="window.location.href='Technical.html'">Continue to Technical Round →</button>
+
+  <div class="review-box" id="RV">
+    <div class="review-title">📋 Answer Review</div>
+    <div id="RVL"></div>
+  </div>
+</div>
+
+<script>
+var SERVER="http://localhost:5004",LABS=["A","B","C","D"];
+var userRole=localStorage.getItem("selectedRole")||"Frontend Developer";
+var userDomain=localStorage.getItem("selectedDomain")||"Web Development";
+var userID=localStorage.getItem("userId")||"";
+if(!userID){window.location.href="login.html";}
+document.getElementById("RL").textContent=userRole;
+var allQ=[],cur=0,okCount=0,ansLog=[],picked=null,secs=30,tmr=null;
+
+function loadQ(){
+  fetch(SERVER+"/api/generate-questions",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({round:"aptitude",role:userRole,domain:userDomain})})
+  .then(function(r){return r.json();})
+  .then(function(d){
+    allQ=d.questions;
+    if(!allQ||allQ.length===0)throw new Error("No questions");
+    document.getElementById("QT").textContent=allQ.length;
+    document.getElementById("LD").style.display="none";
+    document.getElementById("QZ").style.display="block";
+    renderQ();
+  })
+  .catch(function(){alert("❌ Cannot connect to backend");});
+}
+
+function renderQ(){
+  var q=allQ[cur];picked=null;
+  document.getElementById("QN").textContent=cur+1;
+  document.getElementById("QC").textContent="Question "+(cur+1)+" of "+allQ.length;
+  document.getElementById("QX").textContent=q.question;
+  document.getElementById("PB").style.width=(cur/allQ.length*100)+"%";
+  document.getElementById("SC").textContent="Answered: "+cur+" / "+allQ.length;
+  document.getElementById("BS").style.display="block";
+  document.getElementById("BS").disabled=true;
+  document.getElementById("BN").style.display="none";
+  document.getElementById("BN").textContent=cur===allQ.length-1?"🏁 Finish & See Results →":"Next →";
+  var html="";
+  for(var i=0;i<q.options.length;i++){
+    html+='<div class="opt" id="op'+i+'" onclick="pickOpt('+i+')"><div class="badge">'+LABS[i]+'</div><span class="otext">'+q.options[i]+'</span></div>';
+  }
+  document.getElementById("OB").innerHTML=html;
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(tmr);secs=30;tickTimer();
+  tmr=setInterval(function(){secs--;tickTimer();if(secs<=0){clearInterval(tmr);autoTimeout();}},1000);
+}
+
+function tickTimer(){
+  var p=secs/30*100;
+  var f=document.getElementById("TF");
+  f.style.width=p+"%";
+  f.style.background=secs>15?"linear-gradient(90deg,#3b82f6,#1d4ed8)":secs>8?"#f59e0b":"#ef4444";
+  document.getElementById("TN").textContent="⏱ "+secs+"s";
+}
+
+function autoTimeout(){
+  if(picked!==null)return;
+  lockOptions();
+  ansLog.push({question:allQ[cur].question,options:allQ[cur].options,selected:-1,correct:allQ[cur].answer,isCorrect:false,timedOut:true});
+  document.getElementById("BS").style.display="none";
+  document.getElementById("BN").style.display="block";
+}
+
+function pickOpt(i){
+  if(document.getElementById("op0").classList.contains("locked"))return;
+  picked=i;
+  for(var j=0;j<allQ[cur].options.length;j++){
+    var el=document.getElementById("op"+j);
+    if(el)el.classList.remove("chosen");
+  }
+  var c=document.getElementById("op"+i);
+  if(c)c.classList.add("chosen");
+  document.getElementById("BS").disabled=false;
+}
+
+function doSubmit(){
+  if(picked===null)return;
+  clearInterval(tmr);
+  var q=allQ[cur],ok=(picked===q.answer);
+  if(ok)okCount++;
+  ansLog.push({question:q.question,options:q.options,selected:picked,correct:q.answer,isCorrect:ok,timedOut:false});
+  lockOptions();
+  document.getElementById("BS").style.display="none";
+  document.getElementById("BN").style.display="block";
+}
+
+function lockOptions(){
+  var count=allQ[cur].options.length;
+  for(var i=0;i<count;i++){
+    var el=document.getElementById("op"+i);
+    if(!el)continue;
+    el.classList.add("locked");
+    if(picked!==-1 && i!==picked) el.classList.add("faded");
+  }
+}
+
+function doNext(){
+  cur++;
+  cur<allQ.length?renderQ():showSummary();
+}
+
+function showSummary(){
+  clearInterval(tmr);
+  document.getElementById("TN").style.display="none";
+  var pct=Math.round(okCount/allQ.length*100);
+  var avg=parseFloat((okCount/allQ.length*10).toFixed(1));
+  localStorage.setItem("aptitudeScore",avg);
+  localStorage.setItem("aptitudeCorrect",okCount);
+  localStorage.setItem("aptitudeTotal",allQ.length);
+  localStorage.setItem("aptitudeAnswers",JSON.stringify(ansLog));
+  document.getElementById("QZ").style.display="none";
+  document.getElementById("SB").style.display="block";
+  document.getElementById("BC").style.display="block";
+  document.getElementById("PB").style.width="100%";
+  document.getElementById("SC").textContent="✓ "+okCount+" / "+allQ.length;
+  document.getElementById("SP").textContent=pct+"%";
+  document.getElementById("SD").textContent=okCount+" correct out of "+allQ.length+" questions";
+  document.getElementById("SG").textContent=pct>=80?"🌟 Excellent!":pct>=60?"👍 Good!":pct>=40?"📚 Keep Practicing":"💪 Try Again!";
+  buildReview();
+  fetch(SERVER+"/api/save-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({userId:userID,role:userRole,domain:userDomain,round:"aptitude",mcqScore:avg,totalQuestions:allQ.length,answers:ansLog})}).catch(function(e){console.warn("save failed:",e);});
+}
+
+function buildReview(){
+  var rv=document.getElementById("RV");
+  var rvl=document.getElementById("RVL");
+  rv.style.display="block";
+  var html="";
+  for(var i=0;i<ansLog.length;i++){
+    var a=ansLog[i];
+    var riCls=a.timedOut?"ri-timeout":a.isCorrect?"ri-correct":"ri-wrong";
+    var statusTxt=a.timedOut?"⏰ Timed Out":a.isCorrect?"✅ Correct":"❌ Incorrect";
+    var statusCls=a.timedOut?"s-timeout":a.isCorrect?"s-correct":"s-wrong";
+    html+='<div class="review-item '+riCls+'">';
+    html+='<div class="review-q-num">Question '+(i+1)+'</div>';
+    html+='<div class="review-q">'+a.question+'</div>';
+    html+='<div class="review-opts-grid">';
+    for(var j=0;j<a.options.length;j++){
+      var oCls="";
+      if(j===a.correct) oCls="rcorrect";
+      else if(j===a.selected&&!a.isCorrect) oCls="rselected-wrong";
+      html+='<div class="roption '+oCls+'"><div class="rbadge">'+LABS[j]+'</div><span>'+a.options[j];
+      if(j===a.correct) html+=' &nbsp;✓ Correct Answer';
+      else if(j===a.selected&&!a.isCorrect) html+=' &nbsp;✗ Your Answer';
+      html+='</span></div>';
+    }
+    html+='</div>';
+    if(a.timedOut) html+='<div style="font-size:12px;color:#92400e;margin-top:6px;">You ran out of time on this question.</div>';
+    html+='<span class="rstatus '+statusCls+'">'+statusTxt+'</span>';
+    html+='</div>';
+  }
+  rvl.innerHTML=html;
+}
+
+window.onload=loadQ;
+</script>
+</body>
+</html>

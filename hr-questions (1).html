@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HR Questions | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7b5cff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --muted:#777;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);}
+
+header{text-align:center;padding:35px;}
+header h1{color:var(--primary);}
+header p{color:var(--muted);}
+
+.container{max-width:900px;margin:auto;padding:20px;}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  margin-bottom:25px;
+  box-shadow:0 15px 30px rgba(123,92,255,0.15);
+}
+
+.question{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.answer{
+  display:none;
+  background:#eef0ff;
+  padding:15px;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+.controls{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button{
+  padding:10px 18px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.primary{background:var(--primary);color:#fff;}
+.secondary{background:#e7e3ff;color:var(--primary);}
+.record{background:#ff7675;color:#fff;}
+
+audio{margin-top:10px;width:100%;}
+.flow{
+  display:flex;
+  justify-content:space-between;
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>HR Interview Questions</h1>
+  <p>Practice structured answers and record your responses</p>
+</header>
+
+<div class="container" id="questions"></div>
+
+<div class="container flow">
+  <button class="secondary" onclick="goTechnical()">Go to Technical Round →</button>
+  <button class="primary" onclick="goMock()">Proceed to Mock Test →</button>
+</div>
+
+<script>
+const hrQA = [
+{q:"Tell me about yourself.",
+ a:"I am a motivated and detail-oriented individual with a strong interest in learning and professional growth. I enjoy working in team environments and continuously improving my skills to contribute effectively to an organization."
+},
+{q:"What are your strengths?",
+ a:"My key strengths include problem-solving, adaptability, and clear communication. I am quick to learn new concepts and consistently work towards improving my performance."
+},
+{q:"What are your weaknesses?",
+ a:"I sometimes focus too much on details, but I am learning to balance quality with efficiency by prioritizing tasks and managing time better."
+},
+{q:"Why should we hire you?",
+ a:"I bring a positive attitude, willingness to learn, and strong commitment to my work. I am confident I can add value to the team while growing with the organization."
+},
+{q:"Why do you want this job?",
+ a:"This role aligns well with my skills and career goals. I am excited about the opportunity to learn, contribute, and grow within your organization."
+},
+{q:"Tell me about a challenge you faced.",
+ a:"I once faced a tight deadline during a project. By planning tasks effectively and coordinating with my team, I successfully completed it on time."
+},
+{q:"How do you handle pressure?",
+ a:"I stay calm, focus on priorities, and break tasks into smaller steps to handle pressure efficiently."
+},
+{q:"Describe a time you worked in a team.",
+ a:"I worked on a group project where collaboration was essential. By communicating clearly and supporting teammates, we achieved our goal successfully."
+},
+{q:"Where do you see yourself in 5 years?",
+ a:"I see myself growing professionally, taking on more responsibilities, and contributing meaningfully to organizational success."
+},
+{q:"What motivates you?",
+ a:"Learning new things, achieving goals, and seeing the positive impact of my work motivates me."
+},
+{q:"Tell me about a failure.",
+ a:"I once underestimated the time required for a task. This taught me the importance of better planning and realistic deadlines."
+},
+{q:"How do you handle criticism?",
+ a:"I accept constructive criticism positively and use it as an opportunity to improve my skills."
+},
+{q:"Are you willing to relocate?",
+ a:"Yes, I am open to relocation if it helps me grow professionally and contribute effectively."
+},
+{q:"What do you know about our company?",
+ a:"Your company is known for its innovation, strong values, and commitment to excellence, which aligns with my career aspirations."
+},
+{q:"Why did you choose this career?",
+ a:"I chose this career because it challenges me intellectually and provides continuous learning opportunities."
+},
+{q:"How do you manage time?",
+ a:"I prioritize tasks, set realistic deadlines, and follow a structured schedule to manage my time efficiently."
+},
+{q:"What are your short-term goals?",
+ a:"My short-term goal is to strengthen my skills and gain hands-on experience in my field."
+},
+{q:"What are your long-term goals?",
+ a:"My long-term goal is to grow into a responsible professional role and contribute to organizational growth."
+},
+{q:"Describe a conflict and how you resolved it.",
+ a:"I listened to all perspectives, communicated calmly, and worked towards a mutually acceptable solution."
+},
+{q:"How do you prioritize work?",
+ a:"I prioritize tasks based on urgency and importance while ensuring quality output."
+},
+{q:"What is your biggest achievement?",
+ a:"Successfully completing a challenging project within a deadline is one of my biggest achievements."
+},
+{q:"Do you prefer working alone or in a team?",
+ a:"I am comfortable with both, but I prefer teamwork as it encourages collaboration and idea-sharing."
+},
+{q:"How do you handle deadlines?",
+ a:"I plan ahead, track progress, and ensure timely completion without compromising quality."
+},
+{q:"Tell me about a leadership experience.",
+ a:"I led a small team during a project, coordinated tasks, and ensured everyone worked towards a common goal."
+},
+{q:"Why should we not hire you?",
+ a:"I am still gaining experience, but I am highly motivated and committed to learning quickly."
+}
+];
+
+const container = document.getElementById("questions");
+
+hrQA.forEach((item,i)=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+    <div class="question">${i+1}. ${item.q}</div>
+    <div class="controls">
+      <button class="secondary" onclick="toggleAnswer(this)">Show Sample Answer</button>
+      <button class="record" onclick="startRecording(${i})">🎤 Record Answer</button>
+      <button class="secondary" onclick="stopRecording()">⏹ Stop</button>
+    </div>
+    <div class="answer">${item.a}</div>
+    <audio id="audio${i}" controls></audio>
+  `;
+  container.appendChild(card);
+});
+
+function toggleAnswer(btn){
+  const ans=btn.parentElement.nextElementSibling;
+  ans.style.display=ans.style.display==="block"?"none":"block";
+}
+
+let mediaRecorder,audioChunks=[];
+function startRecording(i){
+  navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
+    mediaRecorder=new MediaRecorder(stream);
+    audioChunks=[];
+    mediaRecorder.start();
+    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+    mediaRecorder.onstop=()=>{
+      const blob=new Blob(audioChunks,{type:"audio/webm"});
+      document.getElementById(`audio${i}`).src=URL.createObjectURL(blob);
+    };
+  });
+}
+function stopRecording(){ if(mediaRecorder) mediaRecorder.stop(); }
+
+function goTechnical(){ alert("Redirect to Technical Round"); }
+function goMock(){ alert("Redirect to Full Mock Test"); }
+</script>
+
+</body>
+</html>

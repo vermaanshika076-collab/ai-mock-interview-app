@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coding Challenges | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7b5cff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --muted:#777;
+  --danger:#ff6b6b;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:var(--bg);}
+
+/* Header */
+header{
+  text-align:center;
+  padding:35px 20px;
+}
+header h1{
+  color:var(--primary);
+  font-size:34px;
+}
+header p{
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* Container */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+/* Top Bar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+select{
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+.timer{
+  font-weight:600;
+  color:var(--danger);
+}
+
+/* Card */
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:0 15px 30px rgba(123,92,255,0.12);
+}
+
+.level{
+  color:var(--primary);
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.question{
+  font-size:18px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.desc{
+  color:var(--muted);
+  margin-bottom:15px;
+}
+
+/* Code Editor */
+textarea{
+  width:100%;
+  min-height:160px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  padding:15px;
+  font-family:monospace;
+  font-size:14px;
+  resize:vertical;
+}
+
+/* Buttons */
+.buttons{
+  margin-top:15px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.primary{background:var(--primary);color:#fff;}
+.secondary{background:#e7e3ff;color:var(--primary);}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Coding Challenges</h1>
+  <p>Timed coding practice with real interview questions</p>
+</header>
+
+<div class="container">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <select id="difficulty" onchange="filterQuestions()">
+      <option value="all">All Levels</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+
+    <div class="timer">⏱ Time Left: <span id="time">30:00</span></div>
+  </div>
+
+  <!-- QUESTION CARD -->
+  <div class="card" id="questionCard">
+    <div class="level" id="levelText"></div>
+    <div class="question" id="questionText"></div>
+    <div class="desc" id="descText"></div>
+
+    <textarea placeholder="// Write your code here..."></textarea>
+
+    <div class="buttons">
+      <button class="secondary" onclick="prev()">Previous</button>
+      <button class="secondary" onclick="next()">Next</button>
+      <button class="primary" onclick="submitTest()">Submit Round</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ================= QUESTIONS ================= */
+const questions = [
+{l:"Beginner",q:"Reverse a string",d:"Reverse a given string without using built-in functions."},
+{l:"Beginner",q:"Check palindrome",d:"Check whether a string or number is a palindrome."},
+{l:"Beginner",q:"Find largest number",d:"Return the largest element in an array."},
+{l:"Beginner",q:"Count vowels",d:"Count number of vowels in a string."},
+{l:"Beginner",q:"Fibonacci series",d:"Print Fibonacci series up to n."},
+{l:"Beginner",q:"Factorial",d:"Find factorial using loop or recursion."},
+{l:"Beginner",q:"Even or odd",d:"Check whether a number is even or odd."},
+{l:"Beginner",q:"Sum of array",d:"Find sum of array elements."},
+
+{l:"Intermediate",q:"Remove duplicates",d:"Remove duplicate values from an array."},
+{l:"Intermediate",q:"Second largest",d:"Find the second largest element."},
+{l:"Intermediate",q:"Character frequency",d:"Count frequency of characters in a string."},
+{l:"Intermediate",q:"Reverse words",d:"Reverse words in a sentence."},
+{l:"Intermediate",q:"Check anagram",d:"Check if two strings are anagrams."},
+{l:"Intermediate",q:"Missing number",d:"Find missing number from 1 to n."},
+{l:"Intermediate",q:"Longest word",d:"Find longest word in a string."},
+{l:"Intermediate",q:"Sort array",d:"Sort array without built-in sort."},
+
+{l:"Advanced",q:"Binary search",d:"Implement binary search."},
+{l:"Advanced",q:"Merge sorted arrays",d:"Merge two sorted arrays."},
+{l:"Advanced",q:"Longest unique substring",d:"Find longest substring without repeating characters."},
+{l:"Advanced",q:"Valid parentheses",d:"Check valid parentheses."},
+{l:"Advanced",q:"Two sum",d:"Find two numbers that sum to target."},
+{l:"Advanced",q:"Peak element",d:"Find a peak element."},
+{l:"Advanced",q:"Rotate array",d:"Rotate array by k positions."},
+{l:"Advanced",q:"Maximum subarray",d:"Find maximum subarray sum."},
+{l:"Advanced",q:"Kadane’s algorithm",d:"Implement Kadane’s Algorithm."}
+];
+
+let filtered = [...questions];
+let index = 0;
+
+/* ================= LOAD QUESTION ================= */
+function load(){
+  const q = filtered[index];
+  levelText.innerText = q.l;
+  questionText.innerText = `${index+1}. ${q.q}`;
+  descText.innerText = q.d;
+}
+load();
+
+/* ================= FILTER ================= */
+function filterQuestions(){
+  const val = difficulty.value;
+  filtered = val==="all" ? [...questions] : questions.filter(q=>q.l===val);
+  index = 0;
+  load();
+}
+
+/* ================= NAV ================= */
+function next(){
+  if(index < filtered.length-1){ index++; load(); }
+}
+function prev(){
+  if(index > 0){ index--; load(); }
+}
+
+/* ================= TIMER ================= */
+let total = 30*60; // 30 minutes
+setInterval(()=>{
+  if(total<=0){
+    alert("Time over! Submitting test.");
+    submitTest();
+    return;
+  }
+  total--;
+  const m = String(Math.floor(total/60)).padStart(2,"0");
+  const s = String(total%60).padStart(2,"0");
+  time.innerText = `${m}:${s}`;
+},1000);
+
+/* ================= SUBMIT ================= */
+function submitTest(){
+  alert("Coding Round Submitted Successfully!");
+  window.location.href="dashboard.html";
+}
+</script>
+
+</body>
+</html>

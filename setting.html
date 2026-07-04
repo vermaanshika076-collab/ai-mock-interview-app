@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Settings | MockAI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5f0ff;
+}
+
+/* ===== LAYOUT ===== */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+
+/* ===== TITLE ===== */
+.header{
+  margin-bottom:30px;
+}
+
+.header h1{
+  color:#7c3aed;
+  font-size:32px;
+}
+
+/* ===== CARD ===== */
+.card{
+  background:#fff;
+  border-radius:26px;
+  padding:35px;
+  margin-bottom:30px;
+  box-shadow:0 20px 45px rgba(124,58,237,0.15);
+}
+
+.card h2{
+  margin-bottom:20px;
+  color:#1f2937;
+  font-size:20px;
+}
+
+/* ===== FORM ===== */
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-bottom:20px;
+}
+
+label{
+  font-size:14px;
+  color:#6b7280;
+  margin-bottom:6px;
+  display:block;
+}
+
+input, select{
+  width:100%;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus, select:focus{
+  border-color:#a78bfa;
+}
+
+/* ===== TOGGLE ===== */
+.toggle{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.switch{
+  position:relative;
+  width:50px;
+  height:26px;
+}
+
+.switch input{
+  display:none;
+}
+
+.slider{
+  position:absolute;
+  inset:0;
+  background:#ccc;
+  border-radius:30px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.slider::before{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  left:3px;
+  top:3px;
+  background:white;
+  border-radius:50%;
+  transition:.3s;
+}
+
+.switch input:checked + .slider{
+  background:#7c3aed;
+}
+
+.switch input:checked + .slider::before{
+  transform:translateX(24px);
+}
+
+/* ===== BUTTON ===== */
+.btn{
+  background:linear-gradient(135deg,#c4a5ff,#a78bfa);
+  color:white;
+  border:none;
+  padding:14px 40px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.btn:hover{
+  opacity:.9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:700px){
+  .row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Settings</h1>
+  </div>
+
+  <!-- PROFILE SETTINGS -->
+  <div class="card">
+    <h2>Profile Settings</h2>
+
+    <div class="row">
+      <div>
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter name">
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" placeholder="Enter email">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Phone</label>
+        <input type="text" placeholder="Phone number">
+      </div>
+
+      <div>
+        <label>Role</label>
+        <select>
+          <option>Student</option>
+          <option>Developer</option>
+          <option>Data Analyst</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn">Save Profile</button>
+  </div>
+
+  <!-- ACCOUNT SETTINGS -->
+  <div class="card">
+    <h2>Account Settings</h2>
+
+    <div class="row">
+      <div>
+        <label>New Password</label>
+        <input type="password" placeholder="New password">
+      </div>
+
+      <div>
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Confirm password">
+      </div>
+    </div>
+
+    <button class="btn">Update Password</button>
+  </div>
+
+  <!-- PREFERENCES -->
+  <div class="card">
+    <h2>Preferences</h2>
+
+    <div class="toggle">
+      <span>Email Notifications</span>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle">
+      <span>SMS Alerts</span>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle">
+      <span>Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

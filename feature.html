@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Features | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(180deg,#f4f0ff,#f8f6ff);
+  color:#1f2937;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 8%;
+}
+
+header h2{
+  color:#7c3aed;
+}
+
+header nav a{
+  margin-left:30px;
+  text-decoration:none;
+  color:#374151;
+  font-weight:500;
+}
+
+header nav a:hover{
+  color:#7c3aed;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+  padding:90px 8%;
+  text-align:center;
+}
+
+.features small{
+  letter-spacing:4px;
+  color:#7c3aed;
+  font-weight:600;
+}
+
+.features h1{
+  font-size:44px;
+  color:#4c1d95;
+  margin:15px 0 70px;
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:45px;
+}
+
+.card{
+  background:#ffffff;
+  padding:45px 35px;
+  border-radius:32px;
+  box-shadow:0 30px 50px rgba(124,58,237,0.15);
+  transition:0.35s ease;
+}
+
+.card:hover{
+  transform:translateY(-12px);
+}
+
+.card img{
+  width:190px;
+  margin-bottom:30px;
+}
+
+.card h3{
+  color:#5b21b6;
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.card p{
+  font-size:15px;
+  color:#6b7280;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+
+.card button{
+  padding:12px 40px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#7c3aed,#9333ea);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.card button:hover{
+  background:linear-gradient(135deg,#6d28d9,#7e22ce);
+}
+
+/* ================= DETAILS ================= */
+
+.details{
+  padding:90px 8%;
+  text-align:center;
+}
+
+.details h2{
+  font-size:36px;
+  color:#4c1d95;
+}
+
+.details p{
+  color:#6b7280;
+  max-width:750px;
+  margin:20px auto 60px;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:40px;
+}
+
+/* ================= BENEFITS ================= */
+
+.benefits{
+  padding:90px 8%;
+  background:#ffffff;
+  text-align:center;
+}
+
+.benefits h2{
+  font-size:36px;
+  color:#4c1d95;
+  margin-bottom:60px;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+  background:linear-gradient(135deg,#7c3aed,#9333ea);
+  padding:90px 8%;
+  text-align:center;
+  color:white;
+}
+
+.cta h2{
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.cta p{
+  font-size:18px;
+  opacity:0.95;
+  margin-bottom:35px;
+}
+
+.cta button{
+  padding:16px 55px;
+  border:none;
+  border-radius:45px;
+  font-size:18px;
+  font-weight:600;
+  color:#7c3aed;
+  background:white;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#0f172a;
+  color:#9ca3af;
+  text-align:center;
+  padding:30px;
+  font-size:14px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:700px){
+  .features h1{font-size:32px;}
+  .cta h2{font-size:30px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>AI Mock Interview</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="guidance.html">Guidance</a>
+    <a href="signup.html">Get Started</a>
+  </nav>
+</header>
+
+<section class="features">
+  <small>FEATURES</small>
+  <h1>Our Features & Services</h1>
+
+  <div class="features-grid">
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+      <h3>AI Interview Chat</h3>
+      <p>Real-time AI interview experience with smart responses.</p>
+      <button>MORE</button>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+      <h3>Role-Based Interviews</h3>
+      <p>Customized interview questions for your selected job role.</p>
+      <button>MORE</button>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png">
+      <h3>Instant Feedback</h3>
+      <p>Confidence score, accuracy rating and improvement tips.</p>
+      <button>MORE</button>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+      <h3>Performance Analytics</h3>
+      <p>Track interview progress and performance insights.</p>
+      <button>MORE</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="details">
+  <h2>How It Works</h2>
+  <p>Follow these simple steps to start your interview preparation.</p>
+
+  <div class="steps">
+    <div class="card"><h3>1️⃣ Choose Role</h3><p>Select your domain or job role.</p></div>
+    <div class="card"><h3>2️⃣ Start Interview</h3><p>Answer AI-generated interview questions.</p></div>
+    <div class="card"><h3>3️⃣ Get Feedback</h3><p>Receive instant evaluation and tips.</p></div>
+  </div>
+</section>
+
+<section class="benefits">
+  <h2>Why Choose AI Mock Interview?</h2>
+
+  <div class="features-grid">
+    <div class="card"><h3>✔ Build Confidence</h3><p>Practice until you're interview-ready.</p></div>
+    <div class="card"><h3>✔ Improve Communication</h3><p>Learn structured and clear answering.</p></div>
+    <div class="card"><h3>✔ Save Time</h3><p>Instant AI feedback without mentors.</p></div>
+    <div class="card"><h3>✔ Real Experience</h3><p>Simulates actual interview environment.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Crack Your Interview?</h2>
+  <p>Start practicing today with AI-powered mock interviews.</p>
+  <button onclick="window.location.href='signup.html'">
+    Start Interview Now
+  </button>
+</section>
+
+<footer>
+  © 2026 AI Mock Interview. All rights reserved.
+</footer>
+
+</body>
+</html>

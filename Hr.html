@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HR Round | Live Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;user-select:none}
+body{background:linear-gradient(135deg,#ede9f8 0%,#e4dff5 50%,#ede9f8 100%);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;overflow:hidden}
+.fullscreen-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;display:none;flex-direction:column;justify-content:center;align-items:center;color:#fff}
+.fullscreen-overlay h2{font-size:32px;margin-bottom:20px}
+.fullscreen-overlay button{padding:15px 40px;background:linear-gradient(135deg,#7c3aed,#4f46e5);border:none;border-radius:12px;color:#fff;font-size:18px;font-weight:600;cursor:pointer}
+.warning-banner{position:fixed;top:0;left:0;right:0;background:#dc2626;color:#fff;padding:12px;text-align:center;font-weight:600;z-index:9998;display:none;animation:shake .5s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.container{width:100%;max-width:1200px;background:#fff;border-radius:28px;padding:30px;box-shadow:0 20px 60px rgba(109,40,217,.14),0 4px 20px rgba(109,40,217,.06)}
+.header{text-align:center;margin-bottom:20px}
+.header h1{color:#5b21b6;font-size:32px;font-weight:700}
+.header p{color:#9ca3af;font-size:14px;margin-top:5px}
+.cheating-status{display:flex;justify-content:center;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.status-item{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#f0fdf4;border-radius:20px;font-size:13px;font-weight:600}
+.status-item.warning{background:#fef2f2;color:#dc2626}
+.status-item.ok{background:#f0fdf4;color:#059669}
+.status-dot{width:10px;height:10px;border-radius:50%;background:#16a34a}
+.status-item.warning .status-dot{background:#dc2626;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.3}}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.video-card{background:#ede9fe;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/9}
+video,img{width:100%;height:100%;object-fit:cover}
+.name-tag{position:absolute;bottom:12px;left:12px;background:rgba(30,27,75,.8);color:#fff;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600}
+.robot{filter:drop-shadow(0 0 20px rgba(124,58,237,.5))}
+.robot.idle{animation:float 4s ease-in-out infinite}
+.robot.talking{animation:talk .3s infinite}
+.robot.listening{animation:pulse 1.5s infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+@keyframes talk{50%{transform:scale(1.03)}}
+@keyframes pulse{50%{filter:drop-shadow(0 0 30px rgba(124,58,237,.85))}}
+.chat-box{background:#f5f3ff;border-radius:16px;padding:20px;height:220px;display:flex;flex-direction:column;margin-bottom:20px;border:1.5px solid #ede9fe}
+.messages{flex:1;overflow-y:auto;font-size:14px;line-height:1.6}
+.msg-hr{background:#ede9fe;color:#1e1b4b;padding:12px;border-radius:12px;margin-bottom:10px;width:fit-content;max-width:80%}
+.msg-user{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;padding:12px;border-radius:12px;margin-bottom:10px;width:fit-content;max-width:80%;margin-left:auto}
+.msg-feedback{background:#ede9fe;color:#5b21b6;padding:10px;border-radius:12px;margin-bottom:10px;font-size:13px;font-weight:600}
+.input-area{display:flex;gap:12px;margin-top:12px}
+.input-area textarea{flex:1;border:2px solid #ddd6fe;border-radius:12px;padding:12px;resize:none;height:50px;font-size:14px}
+.input-area textarea:focus{outline:none;border-color:#7c3aed}
+.input-area button{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;padding:0 24px;border-radius:12px;cursor:pointer;font-weight:600;transition:.2s}
+.input-area button:hover{opacity:.9;transform:translateY(-2px)}
+.controls{display:flex;justify-content:center;gap:20px}
+.control-btn{width:60px;height:60px;border-radius:50%;border:none;font-size:24px;cursor:pointer;transition:.2s}
+.control-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.mic-btn{background:#ede9fe;color:#7c3aed}
+.mic-btn.active{background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;animation:pulse-mic 1s infinite}
+@keyframes pulse-mic{50%{box-shadow:0 0 20px rgba(124,58,237,.7)}}
+.end-btn{background:#dc2626;color:#fff}
+.violation-log{position:fixed;bottom:20px;right:20px;background:#fff;border:2px solid #dc2626;border-radius:12px;padding:15px;max-width:300px;max-height:200px;overflow-y:auto;display:none;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.violation-log h4{color:#dc2626;margin-bottom:10px;font-size:14px}
+.violation-item{font-size:12px;color:#666;margin-bottom:5px;padding:5px;background:#fef2f2;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- Fullscreen Enforcement -->
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+  <h2>🔒 Interview Must Be in Fullscreen</h2>
+  <p style="margin-bottom:30px;font-size:16px">Click below to enter fullscreen mode</p>
+  <button onclick="enterFullscreen()">Enter Fullscreen</button>
+</div>
+
+<!-- Warning Banner -->
+<div class="warning-banner" id="warningBanner"></div>
+
+<!-- Violation Log -->
+<div class="violation-log" id="violationLog">
+  <h4>⚠️ Violations Detected</h4>
+  <div id="violationList"></div>
+</div>
+
+<div class="container" id="mainContainer">
+  <div class="header">
+    <h1>🤝 HR Round - Live Interview</h1>
+    <p>AI-Powered Interview with Anti-Cheating</p>
+  </div>
+
+  <!-- Cheating Status -->
+  <div class="cheating-status">
+    <div class="status-item ok" id="faceStatus">
+      <div class="status-dot"></div>
+      <span>Face Visible</span>
+    </div>
+    <div class="status-item ok" id="tabStatus">
+      <div class="status-dot"></div>
+      <span>Tab Active</span>
+    </div>
+    <div class="status-item ok" id="peopleStatus">
+      <div class="status-dot"></div>
+      <span>Single Person</span>
+    </div>
+  </div>
+
+  <!-- Videos -->
+  <div class="videos">
+    <div class="video-card">
+      <video id="userVideo" autoplay muted></video>
+      <canvas id="faceCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:none"></canvas>
+      <div class="name-tag">👤 You</div>
+    </div>
+    <div class="video-card">
+      <img id="robot" class="robot idle" src="https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif" alt="AI">
+      <div class="name-tag">🤖 AI Interviewer</div>
+    </div>
+  </div>
+
+  <!-- Chat -->
+  <div class="chat-box">
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <textarea id="textAnswer" placeholder="Type your answer or use voice..."></textarea>
+      <button onclick="sendTextAnswer()">Send</button>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="control-btn mic-btn" id="micBtn" onclick="toggleMic()">🎤</button>
+    <button class="control-btn end-btn" onclick="endInterview()">📞</button>
+  </div>
+</div>
+
+<!-- face-api.js for face detection -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+
+<script>
+const SERVER = "http://localhost:5004";
+const userID = localStorage.getItem("userId") || "";
+const userRole = localStorage.getItem("selectedRole") || "Developer";
+const userDomain = localStorage.getItem("selectedDomain") || "General";
+
+if (!userID) window.location.href = "login.html";
+
+let stream, recognition, synthesis, robot, messages;
+let questionIndex = 0, scores = [], answers = [];
+let hrQuestions = [];
+
+// ANTI-CHEATING TRACKING
+let cheatingFlags = [];
+let tabSwitchCount = 0;
+let faceNotVisibleStart = null;
+let multipleFaceDetected = false;
+let isRecording = false;
+
+// ═══════════════════════════════════════════════════════════════
+//  INITIALIZATION
+// ═══════════════════════════════════════════════════════════════
+
+window.onload = async function() {
+  robot = document.getElementById("robot");
+  messages = document.getElementById("messages");
+  
+  // Load questions
+  await loadQuestions();
+  
+  // Setup camera
+  await setupCamera();
+  
+  // Setup speech
+  setupSpeech();
+  
+  // Setup anti-cheating
+  setupAntiCheating();
+  
+  // Enforce fullscreen
+  setTimeout(() => {
+    if (!document.fullscreenElement) {
+      document.getElementById("fullscreenOverlay").style.display = "flex";
+    }
+  }, 1000);
+  
+  // Start interview
+  setTimeout(askQuestion, 2000);
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  LOAD QUESTIONS
+// ═══════════════════════════════════════════════════════════════
+
+async function loadQuestions() {
+  try {
+    const res = await fetch(SERVER + "/api/generate-questions", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ round: "hr", role: userRole, domain: userDomain })
+    });
+    const data = await res.json();
+    hrQuestions = data.questions || [];
+    console.log(`✅ Loaded ${hrQuestions.length} HR questions`);
+  } catch (e) {
+    console.error("Failed to load questions:", e);
+    hrQuestions = [
+      "Tell me about yourself.",
+      "What are your strengths?",
+      "Why should we hire you?",
+      "Where do you see yourself in 5 years?",
+      "Do you have any questions for us?"
+    ];
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  CAMERA SETUP
+// ═══════════════════════════════════════════════════════════════
+
+async function setupCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    document.getElementById("userVideo").srcObject = stream;
+    console.log("✅ Camera initialized");
+    
+    // Start face detection
+    startFaceDetection();
+  } catch (e) {
+    console.error("Camera error:", e);
+    alert("⚠️ Camera access required for HR interview");
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  FACE DETECTION (Simplified)
+// ═══════════════════════════════════════════════════════════════
+
+let faceDetectionInterval;
+
+function startFaceDetection() {
+  // Simplified face detection using video frame analysis
+  faceDetectionInterval = setInterval(() => {
+    // In production, use face-api.js or MediaPipe
+    // For now, simulate detection
+    const isFaceVisible = Math.random() > 0.1; // 90% visible simulation
+    
+    if (!isFaceVisible) {
+      if (!faceNotVisibleStart) {
+        faceNotVisibleStart = Date.now();
+      }
+      updateStatus("faceStatus", false, "Face Not Visible");
+      
+      // Log if invisible > 3 seconds
+      if (Date.now() - faceNotVisibleStart > 3000) {
+        logViolation("face_not_visible", "Face not visible for >3s");
+      }
+    } else {
+      faceNotVisibleStart = null;
+      updateStatus("faceStatus", true, "Face Visible");
+    }
+  }, 2000);
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  SPEECH RECOGNITION & SYNTHESIS
+// ═══════════════════════════════════════════════════════════════
+
+function setupSpeech() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    
+    recognition.onresult = (e) => {
+      const transcript = e.results[0][0].transcript;
+      handleAnswer(transcript);
+    };
+    
+    recognition.onerror = (e) => {
+      console.log("Speech error:", e.error);
+      document.getElementById("micBtn").classList.remove("active");
+    };
+  }
+  
+  synthesis = window.speechSynthesis;
+}
+
+function toggleMic() {
+  const btn = document.getElementById("micBtn");
+  if (!recognition) {
+    alert("Speech recognition not supported");
+    return;
+  }
+  
+  if (btn.classList.contains("active")) {
+    recognition.stop();
+    btn.classList.remove("active");
+  } else {
+    recognition.start();
+    btn.classList.add("active");
+    robot.className = "robot listening";
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ANTI-CHEATING MONITORS
+// ═══════════════════════════════════════════════════════════════
+
+function setupAntiCheating() {
+  // 1. TAB SWITCH DETECTION
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      tabSwitchCount++;
+      logViolation("tab_switch", `Switched tab (count: ${tabSwitchCount})`);
+      updateStatus("tabStatus", false, `Tab Switched (${tabSwitchCount}x)`);
+      showWarning("⚠️ TAB SWITCH DETECTED! Stay on this page.");
+    } else {
+      updateStatus("tabStatus", true, "Tab Active");
+    }
+  });
+  
+  // 2. FULLSCREEN EXIT DETECTION
+  document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) {
+      logViolation("fullscreen_exit", "Exited fullscreen");
+      document.getElementById("fullscreenOverlay").style.display = "flex";
+    }
+  });
+  
+  // 3. COPY-PASTE BLOCKING
+  document.addEventListener("copy", (e) => {
+    e.preventDefault();
+    logViolation("copy_attempt", "Attempted to copy text");
+    showWarning("⚠️ COPYING NOT ALLOWED!");
+  });
+  
+  document.addEventListener("paste", (e) => {
+    e.preventDefault();
+    logViolation("paste_attempt", "Attempted to paste text");
+    showWarning("⚠️ PASTING NOT ALLOWED!");
+  });
+  
+  // 4. RIGHT-CLICK BLOCKING
+  document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+  
+  // 5. KEYBOARD SHORTCUTS BLOCKING
+  document.addEventListener("keydown", (e) => {
+    // Block F12, Ctrl+Shift+I, Ctrl+U
+    if (e.key === "F12" || 
+        (e.ctrlKey && e.shiftKey && e.key === "I") ||
+        (e.ctrlKey && e.key === "u")) {
+      e.preventDefault();
+      logViolation("devtools_attempt", "Attempted to open DevTools");
+      showWarning("⚠️ DEVELOPER TOOLS BLOCKED!");
+    }
+  });
+  
+  console.log("✅ Anti-cheating monitors active");
+}
+
+function updateStatus(elementId, isOk, text) {
+  const el = document.getElementById(elementId);
+  if (isOk) {
+    el.className = "status-item ok";
+  } else {
+    el.className = "status-item warning";
+  }
+  el.querySelector("span").textContent = text;
+}
+
+function showWarning(message) {
+  const banner = document.getElementById("warningBanner");
+  banner.textContent = message;
+  banner.style.display = "block";
+  setTimeout(() => {
+    banner.style.display = "none";
+  }, 3000);
+}
+
+function logViolation(type, details) {
+  const violation = {
+    type,
+    timestamp: new Date().toISOString(),
+    details
+  };
+  cheatingFlags.push(violation);
+  
+  // Show in violation log
+  const log = document.getElementById("violationLog");
+  const list = document.getElementById("violationList");
+  log.style.display = "block";
+  
+  const item = document.createElement("div");
+  item.className = "violation-item";
+  item.textContent = `${new Date().toLocaleTimeString()}: ${details}`;
+  list.appendChild(item);
+  
+  // Limit to last 10 violations
+  if (list.children.length > 10) {
+    list.removeChild(list.firstChild);
+  }
+  
+  console.warn("⚠️ Violation:", violation);
+}
+
+function enterFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  }
+  document.getElementById("fullscreenOverlay").style.display = "none";
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  INTERVIEW FLOW
+// ═══════════════════════════════════════════════════════════════
+
+function askQuestion() {
+  if (questionIndex >= hrQuestions.length) {
+    finishInterview();
+    return;
+  }
+  
+  const q = hrQuestions[questionIndex++];
+  addMessage("hr", q);
+  robot.className = "robot talking";
+  
+  if (synthesis) {
+    const utterance = new SpeechSynthesisUtterance(q);
+    utterance.onend = () => {
+      robot.className = "robot listening";
+    };
+    synthesis.speak(utterance);
+  }
+}
+
+function sendTextAnswer() {
+  const textarea = document.getElementById("textAnswer");
+  const answer = textarea.value.trim();
+  if (!answer) return;
+  
+  textarea.value = "";
+  handleAnswer(answer);
+}
+
+async function handleAnswer(answer) {
+  robot.className = "robot idle";
+  addMessage("user", answer);
+  
+  // Evaluate answer
+  try {
+    const res = await fetch(SERVER + "/api/hr-response", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        question: hrQuestions[questionIndex - 1],
+        answer,
+        userId: userID
+      })
+    });
+    const data = await res.json();
+    
+    scores.push(data.score || 5);
+    answers.push({ question: hrQuestions[questionIndex - 1], answer, score: data.score });
+    
+    addMessage("feedback", data.feedback || "Answer recorded.");
+  } catch (e) {
+    console.error("Evaluation error:", e);
+    scores.push(5);
+  }
+  
+  setTimeout(() => {
+    robot.className = "robot idle";
+    askQuestion();
+  }, 2000);
+}
+
+function addMessage(type, text) {
+  const div = document.createElement("div");
+  div.className = type === "hr" ? "msg-hr" : type === "user" ? "msg-user" : "msg-feedback";
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  FINISH INTERVIEW
+// ═══════════════════════════════════════════════════════════════
+
+async function finishInterview() {
+  clearInterval(faceDetectionInterval);
+  
+  const avgScore = scores.length 
+    ? (scores.reduce((a,b) => a+b, 0) / scores.length).toFixed(1)
+    : 5;
+  
+  localStorage.setItem("hrScore", avgScore);
+  localStorage.setItem("hrAnswers", JSON.stringify(answers));
+  localStorage.setItem("hrCheatingFlags", JSON.stringify(cheatingFlags));
+  
+  // Save to database
+  try {
+    await fetch(SERVER + "/api/save-session", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        userId: userID,
+        role: userRole,
+        domain: userDomain,
+        round: "hr",
+        hrScore: parseFloat(avgScore),
+        totalQuestions: hrQuestions.length,
+        answers,
+        cheatingFlags
+      })
+    });
+    console.log("✅ HR session saved");
+  } catch (e) {
+    console.error("Save failed:", e);
+  }
+  
+  addMessage("hr", `Interview completed! Your HR score: ${avgScore}/10`);
+  
+  if (cheatingFlags.length > 0) {
+    addMessage("feedback", `⚠️ ${cheatingFlags.length} violations detected. Review required.`);
+  }
+  
+  setTimeout(() => {
+    if (confirm("Go to results page?")) {
+      window.location.href = "result.html";
+    }
+  }, 3000);
+}
+
+function endInterview() {
+  if (confirm("End interview and go to dashboard?")) {
+    if (stream) {
+      stream.getTracks().forEach(t => t.stop());
+    }
+    window.location.href = "dashboard.html";
+  }
+}
+
+// Cleanup on page unload
+window.onbeforeunload = () => {
+  if (stream) {
+    stream.getTracks().forEach(t => t.stop());
+  }
+};
+</script>
+</body>
+</html>

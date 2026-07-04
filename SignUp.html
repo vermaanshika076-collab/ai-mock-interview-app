@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign Up | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{min-height:100vh;background:linear-gradient(135deg,#ede9f8 0%,#e4dff5 50%,#ede9f8 100%);display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#fff;padding:45px 40px;border-radius:24px;width:440px;box-shadow:0 25px 60px rgba(124,58,237,.2)}
+h2{color:#6d28d9;text-align:center;margin-bottom:8px;font-size:26px;font-weight:700}
+.sub{text-align:center;color:#9ca3af;font-size:13px;margin-bottom:30px}
+label{display:block;font-size:13px;font-weight:600;color:#555;margin-bottom:6px}
+.input-wrap{position:relative;margin-bottom:18px}
+.input-wrap input{width:100%;padding:13px 44px 13px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;transition:.3s}
+.input-wrap input:focus{border-color:#a78bfa;box-shadow:0 0 0 4px rgba(167,139,250,.15)}
+.eye-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#9ca3af;font-size:20px;padding:0;display:flex;align-items:center;transition:.2s}
+.eye-btn:hover{color:#7c3aed}
+.pw-rules{background:#f5f3ff;border:1.5px solid #ddd6fe;border-radius:10px;padding:10px 14px;margin-top:-10px;margin-bottom:16px}
+.pw-rules p{font-size:11.5px;color:#6b7280;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.pw-rules p span.dot{width:5px;height:5px;border-radius:50%;background:#a78bfa;flex-shrink:0}
+.pw-rules p.valid{color:#15803d}
+.pw-rules p.valid span.dot{background:#16a34a}
+button.submit-btn{width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;margin-top:4px;transition:.3s}
+button.submit-btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(109,40,217,.35)}
+.link{text-align:center;margin-top:20px;font-size:13px;color:#888}
+.link a{color:#7c3aed;font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>🚀 Create Account</h2>
+  <p class="sub">Start your AI interview practice journey</p>
+
+  <label>Full Name</label>
+  <div class="input-wrap">
+    <input type="text" id="name" placeholder="Your full name">
+  </div>
+
+  <label>Email</label>
+  <div class="input-wrap">
+    <input type="email" id="email" placeholder="you@example.com">
+  </div>
+
+  <label>Password</label>
+  <div class="input-wrap">
+    <input type="password" id="password" placeholder="Create a strong password" maxlength="64"
+           oninput="checkPwStrength(this.value)">
+    <button class="eye-btn" type="button" onclick="togglePassword('password', this.querySelector('i'))">
+      <i class='bx bx-hide'></i>
+    </button>
+  </div>
+  <!-- Live password rules checker -->
+  <div class="pw-rules" id="pwRules">
+    <p id="r-len"><span class="dot"></span>Minimum 8 characters</p>
+    <p id="r-cap"><span class="dot"></span>Starts with a capital letter</p>
+    <p id="r-num"><span class="dot"></span>Contains at least one number</p>
+    <p id="r-sym"><span class="dot"></span>Contains at least one symbol (!@#$%^&amp;*…)</p>
+  </div>
+
+  <label>Confirm Password</label>
+  <div class="input-wrap">
+    <input type="password" id="confirmPassword" placeholder="Repeat password" maxlength="64">
+    <button class="eye-btn" type="button" onclick="togglePassword('confirmPassword', this.querySelector('i'))">
+      <i class='bx bx-hide'></i>
+    </button>
+  </div>
+
+  <button class="submit-btn" onclick="register(event)">Create Account →</button>
+
+  <p class="link">Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+<script src="auth.js"></script>
+<script>
+function checkPwStrength(pw) {
+  const set = (id, ok) => {
+    const el = document.getElementById(id);
+    el.classList.toggle('valid', ok);
+  };
+  set('r-len', pw.length >= 8);
+  set('r-cap', /^[A-Z]/.test(pw));
+  set('r-num', /[0-9]/.test(pw));
+  set('r-sym', /[!@#$%^&*()\-_=+\[\]{};':"\\|,.<>/?`~]/.test(pw));
+}
+</script>
+</body>
+</html>

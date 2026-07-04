@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Library</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#efe9ff,#f6f2ff);
+    min-height:100vh;
+    padding:40px;
+}
+
+.library-container{
+    max-width:1250px;
+    margin:auto;
+    background:#fff;
+    border-radius:35px;
+    padding:45px;
+    box-shadow:0 40px 90px rgba(125,95,255,.25);
+}
+
+.library-header{
+    text-align:center;
+}
+
+.library-header h1{
+    color:#7b5cff;
+    font-size:40px;
+}
+
+/* search */
+.search-bar{
+    margin:30px auto;
+    max-width:600px;
+    display:flex;
+    background:#f3efff;
+    border-radius:40px;
+    padding:6px;
+}
+
+.search-bar input{
+    flex:1;
+    border:none;
+    outline:none;
+    padding:15px 20px;
+    background:transparent;
+}
+
+.search-bar button{
+    background:linear-gradient(135deg,#b792ff,#7b5cff);
+    border:none;
+    border-radius:40px;
+    padding:0 35px;
+    color:#fff;
+    cursor:pointer;
+}
+
+/* cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.card{
+    background:#faf8ff;
+    border-radius:22px;
+    padding:25px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(120,90,255,.15);
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+    color:inherit;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card img{
+    width:55px;
+}
+
+.card h3{
+    color:#6f4cff;
+    margin-bottom:5px;
+}
+
+.card p{
+    color:#777;
+    font-size:14px;
+}
+
+/* updates */
+.updates{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.update-box{
+    background:#faf8ff;
+    border-radius:25px;
+    padding:25px;
+}
+
+.update{
+    background:#fff;
+    border-radius:16px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 8px 18px rgba(120,90,255,.1);
+}
+
+.badge{
+    background:#b792ff;
+    color:#fff;
+    padding:4px 10px;
+    border-radius:12px;
+    font-size:12px;
+}
+
+/* practice */
+.practice-box{
+    background:linear-gradient(135deg,#b792ff,#7b5cff);
+    border-radius:25px;
+    padding:30px;
+    color:#fff;
+    text-align:center;
+}
+
+.practice-box img{
+    width:190px;
+    margin:15px 0;
+}
+
+.practice-box button{
+    background:#fff;
+    color:#7b5cff;
+    border:none;
+    padding:14px 30px;
+    border-radius:30px;
+    font-weight:600;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="library-container">
+
+<div class="library-header">
+    <h1>Interview Library</h1>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search interview questions...">
+        <button>Search</button>
+    </div>
+</div>
+
+<!-- cards -->
+<div class="cards">
+
+    <a href="Technical Question.html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919827.png">
+        <div>
+            <h3>Technical Questions</h3>
+            <p>Programming and technical concepts</p>
+        </div>
+    </a>
+
+    <a href="HR-Questions.html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+        <div>
+            <h3>HR Questions</h3>
+            <p>Common HR interview questions</p>
+        </div>
+    </a>
+
+    <a href="interview-tips (1).html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1021/1021264.png">
+        <div>
+            <h3>Interview Tips</h3>
+            <p>Best tips to ace interviews</p>
+        </div>
+    </a>
+
+    <a href="resume-tips (1).html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135679.png">
+        <div>
+            <h3>Resume Tips</h3>
+            <p>Create an outstanding resume</p>
+        </div>
+    </a>
+
+    <a href="behavioral-questions (1).html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png">
+        <div>
+            <h3>Behavioral Questions</h3>
+            <p>STAR method questions</p>
+        </div>
+    </a>
+
+    <a href="coding-challenges (1).html" class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/6062/6062646.png">
+        <div>
+            <h3>Coding Challenges</h3>
+            <p>Practice real coding problems</p>
+        </div>
+    </a>
+
+</div>
+
+<!-- updates -->
+<div class="updates">
+
+    <div class="update-box">
+        <h3>Latest Updates</h3><br>
+
+        <div class="update">
+            <span class="badge">New</span>
+            DSA Topic: Graph Algorithms
+        </div>
+
+        <div class="update">
+            <span class="badge">Tip</span>
+            Resume mistakes you must avoid
+        </div>
+
+        <div class="update">
+            <span class="badge">Update</span>
+            Mock Test #4 released
+        </div>
+    </div>
+
+    <div class="practice-box">
+        <h2>Ready to Practice?</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/4149/4149648.png">
+        <p>Start your mock interview now</p>
+        <button onclick="window.location.href='select.html'">Practice Now</button>
+    </div>
+
+</div>
+
+</div>
+
+</body>
+</html>

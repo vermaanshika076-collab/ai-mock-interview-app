@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Select Interview | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{min-height:100vh;background:linear-gradient(135deg,#f5f3ff,#ede9fe);display:flex;flex-direction:column}
+.header{background:linear-gradient(90deg,#8b5cf6,#7c3aed);color:#fff;padding:22px 40px;font-size:22px;font-weight:700;box-shadow:0 8px 25px rgba(139,92,246,.35)}
+.container{max-width:600px;margin:70px auto;background:#fff;padding:45px;border-radius:26px;box-shadow:0 25px 60px rgba(139,92,246,.2)}
+.container h2{text-align:center;color:#6d28d9;margin-bottom:35px;font-size:22px}
+label{display:block;margin-bottom:8px;font-size:14px;font-weight:600;color:#7c3aed}
+select{width:100%;padding:14px;border-radius:14px;border:2px solid #ddd6fe;font-size:14px;background:#faf7ff;margin-bottom:24px;outline:none;cursor:pointer;transition:.3s}
+select:focus{border-color:#a78bfa;box-shadow:0 0 0 4px rgba(167,139,250,.15)}
+.hidden{display:none}
+button{display:block;width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(90deg,#a78bfa,#8b5cf6);color:#fff;cursor:pointer;font-size:16px;font-weight:700;transition:.3s}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,92,246,.4)}
+.back{background:none;border:2px solid #ddd6fe;color:#7c3aed;margin-bottom:24px;padding:10px 24px;width:auto;border-radius:30px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="header">🎯 AI Mock Interview</div>
+
+<div class="container">
+  <button class="back" onclick="history.back()">← Back</button>
+  <h2>Choose Your Interview</h2>
+
+  <label>Select Domain</label>
+  <select id="domain" onchange="loadRoles()">
+    <option value="">-- Select Domain --</option>
+    <option value="Web Development">Web Development</option>
+    <option value="Data Science">Data Science</option>
+    <option value="AI & ML">AI & ML</option>
+    <option value="Cyber Security">Cyber Security</option>
+  </select>
+
+  <div id="roleBox" class="hidden">
+    <label>Select Job Role</label>
+    <select id="role">
+      <option value="">-- Select Role --</option>
+    </select>
+  </div>
+
+  <div id="roleBox" style="display:none">
+    <label>Select Job Role</label>
+    <select id="role"></select>
+  </div>
+
+  <button onclick="startInterview()" style="margin-top:10px">🚀 Start Interview</button>
+</div>
+
+<script src="auth.js"></script>
+<script>
+requireAuth();
+
+const ROLES = {
+  "Web Development": ["Frontend Developer","Backend Developer","Full Stack Developer"],
+  "Data Science":    ["Data Analyst","Data Scientist","ML Engineer"],
+  "AI & ML":         ["AI Engineer","Machine Learning Engineer"],
+  "Cyber Security":  ["Security Analyst","Ethical Hacker"]
+};
+
+function loadRoles() {
+  const domain    = document.getElementById("domain").value;
+  const roleBox   = document.getElementById("roleBox");
+  const roleSelect= document.getElementById("role");
+
+  roleSelect.innerHTML = "<option value=''>-- Select Role --</option>";
+
+  if (domain) {
+    roleBox.style.display = "block";
+    ROLES[domain].forEach(r => {
+      const o = document.createElement("option");
+      o.value = r; o.textContent = r;
+      roleSelect.appendChild(o);
+    });
+  } else {
+    roleBox.style.display = "none";
+  }
+}
+
+function startInterview() {
+  const domain = document.getElementById("domain").value;
+  const role   = document.getElementById("role").value;
+  if (!domain || !role) return showMsg("Please select both domain and role", "error");
+
+  localStorage.setItem("selectedDomain", domain);
+  localStorage.setItem("selectedRole",   role);
+  localStorage.setItem("currentRole",    role);
+  localStorage.setItem("userDomain",     domain);
+
+  window.location.href = "Aptitude.html";
+}
+</script>
+</body>
+</html>

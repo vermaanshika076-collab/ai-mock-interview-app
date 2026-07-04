@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Behavioral Questions | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7b5cff;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+  --text:#333;
+  --muted:#777;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:40px 20px;
+}
+header h1{
+  font-size:36px;
+  color:var(--primary);
+}
+header p{
+  margin-top:8px;
+  color:var(--muted);
+}
+
+/* Container */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+/* Section */
+.section{
+  margin-bottom:40px;
+}
+.section h2{
+  color:var(--primary);
+  margin-bottom:20px;
+  font-size:26px;
+}
+
+/* Card */
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:20px;
+  box-shadow:0 15px 30px rgba(123,92,255,0.12);
+}
+
+.card h3{
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* STAR Box */
+.star{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+.star div{
+  background:#edeaff;
+  padding:15px;
+  border-radius:12px;
+  font-size:14px;
+}
+
+/* Question */
+.question{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+/* Answer */
+.answer{
+  display:none;
+  background:#eef0ff;
+  padding:15px;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* Button */
+button{
+  margin-top:12px;
+  padding:10px 18px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+.primary{
+  background:var(--primary);
+  color:#fff;
+}
+.secondary{
+  background:#e7e3ff;
+  color:var(--primary);
+}
+
+/* Flow */
+.flow{
+  display:flex;
+  justify-content:space-between;
+  margin-top:40px;
+}
+
+@media(max-width:768px){
+  .star{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Behavioral Questions</h1>
+  <p>Practice STAR method questions asked in real interviews</p>
+</header>
+
+<div class="container">
+
+  <!-- STAR METHOD -->
+  <div class="section">
+    <h2>What is the STAR Method?</h2>
+
+    <div class="card star">
+      <div><b>S – Situation</b><br>Describe the context or challenge you faced.</div>
+      <div><b>T – Task</b><br>Explain your responsibility in that situation.</div>
+      <div><b>A – Action</b><br>Describe the steps you took to solve it.</div>
+      <div><b>R – Result</b><br>Share the outcome and what you learned.</div>
+    </div>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div class="section">
+  <h2>Common Behavioral Interview Questions</h2>
+
+  <!-- Q1 -->
+  <div class="card">
+    <div class="question">1. Tell me about a time you faced a challenge.</div>
+    <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+    <div class="answer">
+      <b>Situation:</b> I faced a tight project deadline.<br>
+      <b>Task:</b> I was responsible for completing my module on time.<br>
+      <b>Action:</b> I broke the task into smaller parts and coordinated with my team.<br>
+      <b>Result:</b> The project was completed successfully within the deadline.
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card">
+    <div class="question">2. Describe a time you worked in a team.</div>
+    <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+    <div class="answer">
+      <b>Situation:</b> I worked on a group academic project.<br>
+      <b>Task:</b> My role was to handle frontend development.<br>
+      <b>Action:</b> I communicated regularly and supported teammates.<br>
+      <b>Result:</b> We delivered a successful project.
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card">
+    <div class="question">3. Tell me about a failure and what you learned.</div>
+    <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+    <div class="answer">
+      <b>Situation:</b> I underestimated task duration.<br>
+      <b>Task:</b> I had to complete a feature.<br>
+      <b>Action:</b> I adjusted my plan and asked for guidance.<br>
+      <b>Result:</b> I learned realistic planning.
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card">
+    <div class="question">4. Describe a time you handled pressure.</div>
+    <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+    <div class="answer">
+      <b>Situation:</b> Multiple deadlines overlapped.<br>
+      <b>Task:</b> I had to manage priorities.<br>
+      <b>Action:</b> I planned tasks calmly.<br>
+      <b>Result:</b> All tasks were completed on time.
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <div class="question">5. Tell me about a leadership experience.</div>
+    <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+    <div class="answer">
+      <b>Situation:</b> I led a small team.<br>
+      <b>Task:</b> Coordinating work.<br>
+      <b>Action:</b> Assigned tasks and guided members.<br>
+      <b>Result:</b> Project completed successfully.
+    </div>
+  </div>
+
+  <!-- Q6–Q25 -->
+  <!-- Shorter STAR answers to keep page clean -->
+<!-- Q6 -->
+<div class="card">
+  <div class="question">6. Describe a conflict you resolved.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> Two team members disagreed on task responsibilities.<br>
+    <b>Task:</b> I needed to ensure smooth collaboration.<br>
+    <b>Action:</b> I listened to both perspectives and clarified roles.<br>
+    <b>Result:</b> The conflict was resolved and teamwork improved.
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="card">
+  <div class="question">7. Tell me about a time you showed initiative.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> A project issue was delaying progress.<br>
+    <b>Task:</b> Although not assigned, I decided to act.<br>
+    <b>Action:</b> I identified the cause and suggested a solution.<br>
+    <b>Result:</b> The project moved forward smoothly.
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="card">
+  <div class="question">8. Describe a time you made a mistake.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I made an error in a task implementation.<br>
+    <b>Task:</b> I had to fix it quickly.<br>
+    <b>Action:</b> I acknowledged the mistake and corrected it immediately.<br>
+    <b>Result:</b> The issue was resolved with no impact on delivery.
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="card">
+  <div class="question">9. Tell me about a time you received feedback.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I received feedback on my presentation skills.<br>
+    <b>Task:</b> I needed to improve my communication.<br>
+    <b>Action:</b> I practiced regularly and applied the feedback.<br>
+    <b>Result:</b> My confidence and clarity improved significantly.
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="card">
+  <div class="question">10. Describe a time you handled multiple tasks.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I was assigned multiple tasks with the same deadline.<br>
+    <b>Task:</b> I needed to manage time efficiently.<br>
+    <b>Action:</b> I prioritized tasks and followed a schedule.<br>
+    <b>Result:</b> All tasks were completed on time.
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="card">
+  <div class="question">11. Tell me about a difficult decision you made.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I had to choose between two approaches.<br>
+    <b>Task:</b> Selecting the most effective solution.<br>
+    <b>Action:</b> I evaluated pros and cons before deciding.<br>
+    <b>Result:</b> The chosen approach delivered better results.
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="card">
+  <div class="question">12. Describe a time you helped a teammate.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> A teammate was struggling with a task.<br>
+    <b>Task:</b> I wanted to ensure team success.<br>
+    <b>Action:</b> I assisted and explained the solution.<br>
+    <b>Result:</b> The task was completed successfully.
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="card">
+  <div class="question">13. Tell me about a time you missed a deadline.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I underestimated the time required for a task.<br>
+    <b>Task:</b> I needed to manage expectations.<br>
+    <b>Action:</b> I informed stakeholders early and adjusted my plan.<br>
+    <b>Result:</b> I learned better time estimation.
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="card">
+  <div class="question">14. Describe a situation where you adapted to change.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> Project requirements changed unexpectedly.<br>
+    <b>Task:</b> I had to adapt quickly.<br>
+    <b>Action:</b> I revised my approach and continued work.<br>
+    <b>Result:</b> The project stayed on track.
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="card">
+  <div class="question">15. Tell me about a time you disagreed with someone.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> A team member and I had different views.<br>
+    <b>Task:</b> Reach a mutual agreement.<br>
+    <b>Action:</b> I discussed respectfully and listened carefully.<br>
+    <b>Result:</b> We reached a balanced decision.
+  </div>
+</div>
+
+<!-- Q16 -->
+<div class="card">
+  <div class="question">16. Describe how you handle criticism.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I received constructive criticism.<br>
+    <b>Task:</b> Improve my performance.<br>
+    <b>Action:</b> I accepted feedback positively and worked on it.<br>
+    <b>Result:</b> My performance improved.
+  </div>
+</div>
+
+<!-- Q17 -->
+<div class="card">
+  <div class="question">17. Tell me about a time you managed your time well.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I had multiple responsibilities.<br>
+    <b>Task:</b> Manage time efficiently.<br>
+    <b>Action:</b> I created a task plan and followed it.<br>
+    <b>Result:</b> All responsibilities were handled smoothly.
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="card">
+  <div class="question">18. Describe a time you worked under supervision.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I worked closely with a supervisor.<br>
+    <b>Task:</b> Follow instructions accurately.<br>
+    <b>Action:</b> I clarified doubts and applied guidance.<br>
+    <b>Result:</b> Quality work was delivered.
+  </div>
+</div>
+
+<!-- Q19 -->
+<div class="card">
+  <div class="question">19. Tell me about a time you learned a new skill.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> A project required a new skill.<br>
+    <b>Task:</b> Learn it quickly.<br>
+    <b>Action:</b> I practiced and applied it in real work.<br>
+    <b>Result:</b> I successfully completed the task.
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="card">
+  <div class="question">20. Describe a time you handled responsibility.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I was given ownership of a task.<br>
+    <b>Task:</b> Ensure completion with quality.<br>
+    <b>Action:</b> I stayed accountable and organized work.<br>
+    <b>Result:</b> The task was completed successfully.
+  </div>
+</div>
+
+<!-- Q21 -->
+<div class="card">
+  <div class="question">21. Tell me about a time you stayed motivated.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> A task became repetitive.<br>
+    <b>Task:</b> Maintain motivation.<br>
+    <b>Action:</b> I focused on learning and improvement.<br>
+    <b>Result:</b> I maintained productivity.
+  </div>
+</div>
+
+<!-- Q22 -->
+<div class="card">
+  <div class="question">22. Describe a time you dealt with ambiguity.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> Requirements were unclear.<br>
+    <b>Task:</b> Proceed without confusion.<br>
+    <b>Action:</b> I asked questions and clarified expectations.<br>
+    <b>Result:</b> The task was completed correctly.
+  </div>
+</div>
+
+<!-- Q23 -->
+<div class="card">
+  <div class="question">23. Tell me about a time you prioritized work.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> Multiple urgent tasks arrived.<br>
+    <b>Task:</b> Decide priority order.<br>
+    <b>Action:</b> I assessed urgency and impact.<br>
+    <b>Result:</b> Critical tasks were completed first.
+  </div>
+</div>
+
+<!-- Q24 -->
+<div class="card">
+  <div class="question">24. Describe a stressful situation you handled.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> Unexpected issues occurred close to a deadline.<br>
+    <b>Task:</b> Stay calm and resolve them.<br>
+    <b>Action:</b> I focused on solutions step by step.<br>
+    <b>Result:</b> The issue was resolved successfully.
+  </div>
+</div>
+
+<!-- Q25 -->
+<div class="card">
+  <div class="question">25. Tell me about your biggest learning experience.</div>
+  <button class="secondary" onclick="toggle(this)">Show Sample Answer</button>
+  <div class="answer">
+    <b>Situation:</b> I worked on multiple challenging tasks.<br>
+    <b>Task:</b> Improve my skills and approach.<br>
+    <b>Action:</b> I reflected and applied lessons learned.<br>
+    <b>Result:</b> I became more confident and efficient.
+  </div>
+</div>
+
+  
+  </div>
+
+  <!-- TIPS -->
+  <div class="section">
+    <h2>Behavioral Interview Tips</h2>
+
+    <div class="card">
+      <p>
+        • Always structure answers using STAR<br>
+        • Focus on <b>your actions</b>, not just the team<br>
+        • Be honest and specific<br>
+        • Keep answers concise (1–2 minutes)
+      </p>
+    </div>
+  </div>
+
+  <!-- FLOW -->
+  <div class="flow">
+    <button class="secondary" onclick="goDashboard()">← Dashboard</button>
+    <button class="primary" onclick="goHR()">Practice HR Questions →</button>
+  </div>
+
+</div>
+
+<script>
+function toggle(btn){
+  const ans = btn.nextElementSibling;
+  ans.style.display = ans.style.display === "block" ? "none" : "block";
+}
+function goDashboard(){
+  window.location.href = "dashboard.html";
+}
+function goHR(){
+  window.location.href = "hr-questions.html";
+}
+</script>
+
+</body>
+</html>

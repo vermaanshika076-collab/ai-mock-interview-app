@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Performance Analytics | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f2f0fb;
+  --card:#ffffff;
+  --border:#e8e4f3;
+  --purple:#7c3aed;
+  --purple-light:#a78bfa;
+  --purple-pale:#ede9fe;
+  --green:#16a34a;
+  --green-light:#dcfce7;
+  --red:#dc2626;
+  --red-light:#fee2e2;
+  --amber:#d97706;
+  --amber-light:#fef3c7;
+  --text:#0f172a;
+  --text-2:#475569;
+  --text-3:#94a3b8;
+  --sidebar-w:230px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(124,58,237,.08);
+  --shadow-lg:0 4px 24px rgba(124,58,237,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'DM Sans',sans-serif}
+body{background:var(--bg);color:var(--text);display:flex;min-height:100vh}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--card);height:100vh;position:fixed;left:0;top:0;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:24px 16px;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:var(--text);margin-bottom:32px;padding:0 8px}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--purple),#4f46e5);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;flex-shrink:0}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--text-2);text-decoration:none;font-size:13.5px;font-weight:500;margin-bottom:3px;transition:.18s}
+.nav a i{font-size:18px;flex-shrink:0}
+.nav a:hover{background:var(--purple-pale);color:var(--purple)}
+.nav a.active{background:var(--purple-pale);color:var(--purple);font-weight:600}
+.nav a.logout{color:#ef4444;margin-top:auto}
+.nav a.logout:hover{background:#fef2f2}
+.sidebar-bottom{margin-top:auto}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;padding:28px 32px;max-width:1300px}
+
+/* ── TOP BAR ── */
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.topbar-left h1{font-size:22px;font-weight:700;color:var(--text)}
+.topbar-left p{font-size:13px;color:var(--text-3);margin-top:2px}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.user-chip{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:6px 14px 6px 6px;font-size:13px;color:var(--text-2)}
+.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--purple-light),var(--purple));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+
+/* ── KPI CARDS ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border:1px solid var(--border);transition:.2s}
+.kpi-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.kpi-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-3);margin-bottom:10px}
+.kpi-value{font-size:36px;font-weight:700;color:var(--text);line-height:1;font-family:'DM Mono',monospace}
+.kpi-trend{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;margin-top:8px}
+.kpi-trend.up{color:var(--green)}
+.kpi-trend.down{color:var(--red)}
+.kpi-trend.neutral{color:var(--text-3)}
+.kpi-sub{font-size:11.5px;color:var(--text-3);margin-top:3px}
+
+/* ── CHART GRID ── */
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.chart-grid.three{grid-template-columns:2fr 1fr}
+.chart-box{background:var(--card);border-radius:16px;padding:24px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.chart-box.full{grid-column:1/-1}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.chart-title{font-size:14px;font-weight:600;color:var(--text)}
+.chart-sub{font-size:12px;color:var(--text-3);margin-top:2px}
+.legend{display:flex;gap:16px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-2)}
+.leg-dot{width:10px;height:10px;border-radius:50%}
+
+/* ── ROUND SCORE BARS ── */
+.round-bars{display:flex;flex-direction:column;gap:16px}
+.round-bar-item{}
+.round-bar-label{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:6px}
+.round-bar-name{font-weight:600;color:var(--text)}
+.round-bar-score{font-weight:700;font-family:'DM Mono',monospace;color:var(--purple)}
+.bar-track{width:100%;height:10px;background:#f1eeff;border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+
+/* ── ATTEMPT TABLE ── */
+.attempt-table{width:100%;border-collapse:collapse}
+.attempt-table th{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-3);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.attempt-table td{padding:11px 12px;font-size:13px;color:var(--text-2);border-bottom:1px solid #f8f7fe}
+.attempt-table tbody tr:last-child td{border-bottom:none}
+.attempt-table tbody tr:hover td{background:#faf9ff}
+.round-pill{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.pill-apt{background:#ede9fe;color:#6d28d9}
+.pill-tech{background:#dbeafe;color:#1d4ed8}
+.pill-hr{background:#d1fae5;color:#065f46}
+
+/* ── DONUT SECTION ── */
+.donut-wrap{position:relative;width:160px;height:160px;margin:0 auto 16px}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.donut-pct{font-size:28px;font-weight:700;color:var(--text);font-family:'DM Mono',monospace}
+.donut-lbl{font-size:11px;color:var(--text-3)}
+.donut-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.dstat{text-align:center;background:var(--purple-pale);border-radius:10px;padding:10px}
+.dstat-val{font-size:18px;font-weight:700;color:var(--purple);font-family:'DM Mono',monospace}
+.dstat-lbl{font-size:11px;color:var(--text-3);margin-top:2px}
+
+/* ── LOADING ── */
+.loading{text-align:center;padding:60px 20px;color:var(--text-3)}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── CANVAS HEIGHT ── */
+.h280 canvas{height:280px!important}
+.h220 canvas{height:220px!important}
+.h300 canvas{height:300px!important}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo"><div class="logo-icon">AI</div>Mock Interview</div>
+  <nav class="nav">
+    <a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a>
+    <a href="resume.html"><i class='bx bxs-file'></i>Resume</a>
+    <a href="select.html"><i class='bx bx-play-circle'></i>Start Interview</a>
+    <a href="Technical.html"><i class='bx bx-code-alt'></i>Technical Round</a>
+    <a href="Hr.html"><i class='bx bx-user'></i>HR Round</a>
+    <a href="analytics.html" class="active"><i class='bx bxs-bar-chart-alt-2'></i>Performance Graph</a>
+    <a href="interview-library.html"><i class='bx bx-box'></i>Interview Library</a>
+    <a href="setting.html"><i class='bx bx-cog'></i>Setting</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <nav class="nav">
+      <a href="index.html" class="logout" onclick="logout()"><i class='bx bx-log-out'></i>Logout</a>
+    </nav>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Performance Analytics</h1>
+      <p>Track your interview progress across all rounds</p>
+    </div>
+    <div class="topbar-right">
+      <div class="user-chip">
+        <div class="avatar" id="avatarInit">?</div>
+        <span id="userNameTop">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="kpi-grid" id="kpiGrid">
+    <div class="kpi-card"><div class="kpi-label">Total Attempts</div><div class="kpi-value" id="k-total">—</div><div class="kpi-trend neutral">All rounds combined</div></div>
+    <div class="kpi-card"><div class="kpi-label">Aptitude Avg</div><div class="kpi-value" id="k-apt">—</div><div class="kpi-sub" id="k-apt-sub">out of 10</div></div>
+    <div class="kpi-card"><div class="kpi-label">Technical Avg</div><div class="kpi-value" id="k-tech">—</div><div class="kpi-sub" id="k-tech-sub">out of 10</div></div>
+    <div class="kpi-card"><div class="kpi-label">HR Avg</div><div class="kpi-value" id="k-hr">—</div><div class="kpi-sub" id="k-hr-sub">out of 10</div></div>
+  </div>
+
+  <!-- ROW 1: Score Over Time (wide) + Round Breakdown -->
+  <div class="chart-grid three" style="margin-bottom:20px">
+    <div class="chart-box h280">
+      <div class="chart-header">
+        <div><div class="chart-title">Score Progression</div><div class="chart-sub">Performance trend across attempts</div></div>
+        <div class="legend">
+          <div class="leg-item"><div class="leg-dot" style="background:#7c3aed"></div>Aptitude</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#16a34a"></div>Technical</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#f59e0b"></div>HR</div>
+        </div>
+      </div>
+      <canvas id="progressChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <div class="chart-header"><div><div class="chart-title">Round Scores</div><div class="chart-sub">Average per round</div></div></div>
+      <div class="round-bars" id="roundBars">
+        <div class="round-bar-item">
+          <div class="round-bar-label"><span class="round-bar-name">🧮 Aptitude</span><span class="round-bar-score" id="rb-apt-score">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="rb-apt-fill" style="width:0%;background:linear-gradient(90deg,#a78bfa,#7c3aed)"></div></div>
+        </div>
+        <div class="round-bar-item">
+          <div class="round-bar-label"><span class="round-bar-name">💻 Technical</span><span class="round-bar-score" id="rb-tech-score">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="rb-tech-fill" style="width:0%;background:linear-gradient(90deg,#6ee7b7,#16a34a)"></div></div>
+        </div>
+        <div class="round-bar-item">
+          <div class="round-bar-label"><span class="round-bar-name">🤝 HR Round</span><span class="round-bar-score" id="rb-hr-score">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="rb-hr-fill" style="width:0%;background:linear-gradient(90deg,#fcd34d,#d97706)"></div></div>
+        </div>
+        <div class="round-bar-item">
+          <div class="round-bar-label"><span class="round-bar-name">⭐ Overall</span><span class="round-bar-score" id="rb-ov-score">—</span></div>
+          <div class="bar-track"><div class="bar-fill" id="rb-ov-fill" style="width:0%;background:linear-gradient(90deg,#93c5fd,#4f46e5)"></div></div>
+        </div>
+      </div>
+
+      <!-- Donut for overall -->
+      <div style="margin-top:24px">
+        <div class="donut-wrap h220">
+          <canvas id="donutChart"></canvas>
+          <div class="donut-center">
+            <div class="donut-pct" id="donutPct">—</div>
+            <div class="donut-lbl">Overall</div>
+          </div>
+        </div>
+        <div class="donut-stats">
+          <div class="dstat"><div class="dstat-val" id="ds-total">0</div><div class="dstat-lbl">Total Sessions</div></div>
+          <div class="dstat"><div class="dstat-val" id="ds-best">—</div><div class="dstat-lbl">Best Score</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Bar chart + Area chart -->
+  <div class="chart-grid" style="margin-bottom:20px">
+    <div class="chart-box h280">
+      <div class="chart-header">
+        <div><div class="chart-title">Round Comparison</div><div class="chart-sub">Average scores per category</div></div>
+      </div>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chart-box h280">
+      <div class="chart-header">
+        <div><div class="chart-title">Cumulative Progress</div><div class="chart-sub">Rolling average over attempts</div></div>
+        <div class="legend">
+          <div class="leg-item"><div class="leg-dot" style="background:#818cf8"></div>Avg</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#c4b5fd"></div>Trend</div>
+        </div>
+      </div>
+      <canvas id="areaChart"></canvas>
+    </div>
+  </div>
+
+  <!-- ROW 3: Recent attempts table -->
+  <div class="chart-box full" style="margin-bottom:20px">
+    <div class="chart-header">
+      <div><div class="chart-title">Recent Attempt History</div><div class="chart-sub">Last 10 interview sessions</div></div>
+    </div>
+    <div id="attemptTable"><div class="loading"><div class="spinner"></div>Loading data…</div></div>
+  </div>
+
+</div>
+
+<script>
+const userId = localStorage.getItem("userId");
+const name   = localStorage.getItem("userName") || localStorage.getItem("name") || "User";
+if (!userId) window.location.href = "login.html";
+
+document.getElementById("userNameTop").textContent = name;
+document.getElementById("avatarInit").textContent  = name.charAt(0).toUpperCase();
+
+function avg(arr) {
+  const v = arr.filter(n => !isNaN(n) && n !== null);
+  return v.length ? v.reduce((a,b) => a+b,0) / v.length : 0;
+}
+
+function trendClass(cur, prev) {
+  if (!prev || prev === 0) return "neutral";
+  return cur >= prev ? "up" : "down";
+}
+
+function trendArrow(cur, prev) {
+  if (!prev || prev === 0) return "";
+  const diff = (cur - prev).toFixed(1);
+  return cur >= prev ? `↑ ${diff > 0 ? '+'+diff : diff}` : `↓ ${diff}`;
+}
+
+// Chart.js default font
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size   = 12;
+Chart.defaults.color       = "#94a3b8";
+
+async function loadAnalytics() {
+  try {
+    const res  = await fetch(`http://localhost:5004/api/analytics/${userId}`);
+    const data = await res.json();
+
+    const aptS  = (data.aptitude  || []).map(Number).filter(n => !isNaN(n));
+    const techS = (data.technical || []).map(Number).filter(n => !isNaN(n));
+    const hrS   = (data.hr        || []).map(Number).filter(n => !isNaN(n));
+    const total = aptS.length + techS.length + hrS.length;
+
+    const aptAvg  = avg(aptS);
+    const techAvg = avg(techS);
+    const hrAvg   = avg(hrS);
+    const overall = data.overall || avg([...aptS, ...techS, ...hrS]) || 0;
+
+    const allScores = [...aptS, ...techS, ...hrS];
+    const bestScore = allScores.length ? Math.max(...allScores).toFixed(1) : "—";
+
+    // ── KPI Cards ─────────────────────────────────────────────
+    document.getElementById("k-total").textContent = total;
+    document.getElementById("k-apt").textContent   = aptAvg  ? aptAvg.toFixed(1)  : "—";
+    document.getElementById("k-tech").textContent  = techAvg ? techAvg.toFixed(1) : "—";
+    document.getElementById("k-hr").textContent    = hrAvg   ? hrAvg.toFixed(1)   : "—";
+
+    const halfApt  = Math.ceil(aptS.length  / 2);
+    const halfTech = Math.ceil(techS.length / 2);
+    const halfHr   = Math.ceil(hrS.length   / 2);
+    [
+      ["k-apt-sub",  trendClass(avg(aptS.slice(halfApt)),  avg(aptS.slice(0,halfApt))),  trendArrow(avg(aptS.slice(halfApt)),  avg(aptS.slice(0,halfApt)))],
+      ["k-tech-sub", trendClass(avg(techS.slice(halfTech)),avg(techS.slice(0,halfTech))),trendArrow(avg(techS.slice(halfTech)),avg(techS.slice(0,halfTech)))],
+      ["k-hr-sub",   trendClass(avg(hrS.slice(halfHr)),    avg(hrS.slice(0,halfHr))),    trendArrow(avg(hrS.slice(halfHr)),    avg(hrS.slice(0,halfHr)))]
+    ].forEach(([id, cls, txt]) => {
+      const el = document.getElementById(id);
+      if (txt) { el.className = "kpi-trend " + cls; el.textContent = txt + " vs prev half"; }
+      else      { el.textContent = "out of 10"; }
+    });
+
+    // ── Round Bars ────────────────────────────────────────────
+    function setBar(prefix, av) {
+      const pct = Math.min((av / 10) * 100, 100).toFixed(1);
+      document.getElementById("rb-"+prefix+"-score").textContent = av ? av.toFixed(1)+"/10" : "—";
+      setTimeout(() => { document.getElementById("rb-"+prefix+"-fill").style.width = pct+"%"; }, 200);
+    }
+    setBar("apt",  aptAvg);
+    setBar("tech", techAvg);
+    setBar("hr",   hrAvg);
+    setBar("ov",   overall);
+
+    // ── Donut ─────────────────────────────────────────────────
+    const ovPct = Math.round((overall / 10) * 100);
+    document.getElementById("donutPct").textContent = ovPct ? ovPct+"%" : "—";
+    document.getElementById("ds-total").textContent = total;
+    document.getElementById("ds-best").textContent  = bestScore;
+
+    new Chart(document.getElementById("donutChart"), {
+      type: "doughnut",
+      data: {
+        datasets: [{
+          data: [ovPct || 0, 100 - (ovPct || 0)],
+          backgroundColor: ["#7c3aed", "#f1eeff"],
+          borderWidth: 0,
+          hoverOffset: 0
+        }]
+      },
+      options: {
+        cutout: "72%",
+        plugins: { legend: { display: false }, tooltip: { enabled: false }},
+        animation: { animateRotate: true, duration: 900 }
+      }
+    });
+
+    // ── Progress Line Chart ────────────────────────────────────
+    const maxLen = Math.max(aptS.length, techS.length, hrS.length, 1);
+    const lbls   = Array.from({length: maxLen}, (_, i) => `#${i+1}`);
+
+    new Chart(document.getElementById("progressChart"), {
+      type: "line",
+      data: {
+        labels: lbls,
+        datasets: [
+          { label:"Aptitude",  data: aptS,  borderColor:"#7c3aed", backgroundColor:"rgba(124,58,237,.08)", borderWidth:2.5, tension:.4, fill:true, pointBackgroundColor:"#7c3aed", pointRadius:4, pointHoverRadius:6 },
+          { label:"Technical", data: techS, borderColor:"#16a34a", backgroundColor:"rgba(22,163,74,.08)",  borderWidth:2.5, tension:.4, fill:true, pointBackgroundColor:"#16a34a", pointRadius:4, pointHoverRadius:6 },
+          { label:"HR",        data: hrS,   borderColor:"#f59e0b", backgroundColor:"rgba(245,158,11,.08)", borderWidth:2.5, tension:.4, fill:true, pointBackgroundColor:"#f59e0b", pointRadius:4, pointHoverRadius:6 }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        interaction:{ mode:"index", intersect:false },
+        scales:{
+          x:{ grid:{ color:"#f1eeff" }, ticks:{ font:{ size:11 } } },
+          y:{ beginAtZero:true, max:10, grid:{ color:"#f1eeff" },
+              ticks:{ stepSize:2, font:{ size:11 } } }
+        },
+        plugins:{ legend:{ display:false }, tooltip:{ backgroundColor:"#1e1b4b", titleColor:"#a78bfa", bodyColor:"#e0e7ff", padding:12, cornerRadius:10 } }
+      }
+    });
+
+    // ── Bar Chart ─────────────────────────────────────────────
+    new Chart(document.getElementById("barChart"), {
+      type: "bar",
+      data: {
+        labels: ["Aptitude", "Technical", "HR Round", "Overall"],
+        datasets: [{
+          data: [aptAvg, techAvg, hrAvg, overall],
+          backgroundColor: ["#a78bfa", "#6ee7b7", "#fcd34d", "#818cf8"],
+          borderRadius: 10,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ display:false }, tooltip:{ backgroundColor:"#1e1b4b", titleColor:"#a78bfa", bodyColor:"#e0e7ff", padding:12, cornerRadius:10 } },
+        scales:{
+          x:{ grid:{ display:false }, ticks:{ font:{ size:12 } } },
+          y:{ beginAtZero:true, max:10, grid:{ color:"#f1eeff" }, ticks:{ stepSize:2 } }
+        }
+      }
+    });
+
+    // ── Area / Cumulative Chart ────────────────────────────────
+    const combined = allScores;
+    let rolling = [], runSum = 0;
+    combined.forEach((v, i) => { runSum += v; rolling.push(parseFloat((runSum/(i+1)).toFixed(2))); });
+    const areaLbls = combined.map((_,i) => `#${i+1}`);
+
+    new Chart(document.getElementById("areaChart"), {
+      type: "line",
+      data: {
+        labels: areaLbls.length ? areaLbls : ["—"],
+        datasets: [
+          { label:"Score", data: combined, borderColor:"#818cf8", backgroundColor:"rgba(129,140,248,.15)", borderWidth:2, tension:.4, fill:true, pointRadius:3, pointBackgroundColor:"#818cf8" },
+          { label:"Rolling Avg", data: rolling, borderColor:"#c4b5fd", borderDash:[5,4], borderWidth:2, tension:.4, fill:false, pointRadius:0 }
+        ]
+      },
+      options: {
+        responsive:true, maintainAspectRatio:false,
+        interaction:{ mode:"index", intersect:false },
+        scales:{
+          x:{ grid:{ color:"#f1eeff" }, ticks:{ font:{ size:11 } } },
+          y:{ beginAtZero:true, max:10, grid:{ color:"#f1eeff" }, ticks:{ stepSize:2 } }
+        },
+        plugins:{ legend:{ display:false }, tooltip:{ backgroundColor:"#1e1b4b", titleColor:"#a78bfa", bodyColor:"#e0e7ff", padding:12, cornerRadius:10 } }
+      }
+    });
+
+    // ── Attempt Table ─────────────────────────────────────────
+    try {
+      const hRes  = await fetch(`http://localhost:5004/api/history/${userId}`);
+      const hData = await hRes.json();
+      const rows  = hData.slice(0,10).map(s => {
+        const date = new Date(s.date).toLocaleDateString("en-US", { month:"short", day:"numeric", year:"numeric" });
+        const pillCls = s.round === "aptitude" ? "pill-apt" : s.round === "technical" ? "pill-tech" : "pill-hr";
+        const roundLbl = s.round === "aptitude" ? "🧮 Aptitude" : s.round === "technical" ? "💻 Technical" : "🤝 HR";
+        const score = s.avgScore != null ? `<span style="font-weight:700;color:#7c3aed;font-family:'DM Mono',monospace">${s.avgScore.toFixed(1)}/10</span>` : "<span style='color:#94a3b8'>—</span>";
+        const vio   = (s.cheatingFlags && s.cheatingFlags.length) || 0;
+        const integ = vio > 0 ? `<span style="color:#dc2626;font-weight:700;font-size:12px">🚨 ${vio} flag${vio>1?'s':''}</span>` : `<span style="color:#16a34a;font-weight:700;font-size:12px">✅ Clean</span>`;
+        return `<tr>
+          <td style="font-weight:500;color:#0f172a">${s.role||"—"}</td>
+          <td>${s.domain||"—"}</td>
+          <td><span class="round-pill ${pillCls}">${roundLbl}</span></td>
+          <td>${score}</td>
+          <td>${integ}</td>
+          <td style="color:#94a3b8">${date}</td>
+        </tr>`;
+      }).join("");
+
+      document.getElementById("attemptTable").innerHTML = rows.length
+        ? `<table class="attempt-table">
+             <thead><tr><th>Role</th><th>Domain</th><th>Round</th><th>Score</th><th>Integrity</th><th>Date</th></tr></thead>
+             <tbody>${rows}</tbody>
+           </table>`
+        : `<p style="text-align:center;padding:30px;color:#94a3b8;font-size:14px">No sessions found yet.</p>`;
+    } catch(e) {
+      document.getElementById("attemptTable").innerHTML = `<p style="text-align:center;padding:30px;color:#ef4444;font-size:14px">Could not load history.</p>`;
+    }
+
+  } catch(e) {
+    document.querySelectorAll(".loading").forEach(el => el.innerHTML = `<p style="color:#ef4444">❌ Cannot reach backend on port 5004.</p>`);
+    console.error(e);
+  }
+}
+
+function logout() { localStorage.clear(); window.location.href = "login.html"; }
+loadAnalytics();
+</script>
+</body>
+</html>

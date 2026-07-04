@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interview Guidance | AI Mock Interview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#5b2bd6;
+  --secondary:#7c4dff;
+  --bg:#f6f3ff;
+  --card:#ffffff;
+  --text:#1f1f2e;
+  --muted:#6b6b85;
+}
+
+/* ---------- RESET ---------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+/* ---------- DARK MODE ---------- */
+body.dark{
+  --bg:#0f0b1f;
+  --card:#1a1440;
+  --text:#f3f4f6;
+  --muted:#b6b6d8;
+}
+
+/* ---------- NAVBAR ---------- */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:var(--card);
+  box-shadow:0 6px 25px rgba(91,43,214,0.08);
+}
+
+nav h2{
+  color:var(--primary);
+  font-weight:700;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+nav ul li a:hover{
+  color:var(--primary);
+}
+
+#themeToggle{
+  background:#ede9ff;
+  border:none;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:18px;
+  color:var(--primary);
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  padding:90px 8%;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:18px;
+  opacity:.95;
+}
+
+/* ---------- CONTENT ---------- */
+.guidance{
+  padding:90px 8%;
+}
+
+.guidance-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+}
+
+/* ---------- CARDS ---------- */
+.card{
+  background:var(--card);
+  border-radius:28px;
+  padding:40px 30px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(91,43,214,.08);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-12px);
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:28px;
+  background:linear-gradient(135deg,var(--secondary),var(--primary));
+  opacity:0;
+  filter:blur(35px);
+  z-index:-1;
+  transition:.3s;
+}
+
+.card:hover::after{
+  opacity:.6;
+}
+
+.card img{
+  width:80px;
+  margin-bottom:22px;
+}
+
+.card h3{
+  font-size:22px;
+  margin-bottom:12px;
+  color:var(--primary);
+}
+
+.card p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+}
+
+/* ---------- STEPS ---------- */
+.steps{
+  margin-top:90px;
+}
+
+.steps h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:55px;
+  color:var(--primary);
+}
+
+.step-box{
+  display:flex;
+  gap:25px;
+  background:var(--card);
+  padding:28px 32px;
+  border-radius:22px;
+  margin-bottom:28px;
+  box-shadow:0 15px 35px rgba(91,43,214,.08);
+}
+
+.step-number{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+}
+
+/* ---------- CTA ---------- */
+.cta{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  padding:80px 8%;
+  text-align:center;
+  color:white;
+}
+
+.cta h2{
+  font-size:34px;
+  margin-bottom:25px;
+}
+
+.cta button{
+  padding:16px 50px;
+  font-size:17px;
+  font-weight:600;
+  border:none;
+  border-radius:45px;
+  cursor:pointer;
+  color:var(--primary);
+  background:white;
+}
+
+.cta button:hover{
+  background:#ede9ff;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#1b1036;
+  color:#c4b5fd;
+  padding:30px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:768px){
+  nav ul{display:none;}
+  .hero h1{font-size:32px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <h2>AI Mock Interview</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="signup.html">Get Started</a></li>
+  </ul>
+  <button id="themeToggle">🌙</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Interview Guidance & Preparation</h1>
+  <p>Prepare smarter with AI-powered mock interviews.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="guidance">
+  <div class="guidance-grid">
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png">
+      <h3>Understand Interviews</h3>
+      <p>Know formats, expectations and evaluation methods.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+      <h3>Role-Based Questions</h3>
+      <p>Practice job-specific interview questions.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+      <h3>Communication Skills</h3>
+      <p>Improve clarity, confidence and structure.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/1157/1157109.png">
+      <h3>Performance Analysis</h3>
+      <p>Get AI insights and improvement areas.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+      <h3>HR Interview Tips</h3>
+      <p>Behavioral questions with STAR method.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+      <h3>AI Mock Practice</h3>
+      <p>Unlimited AI-driven mock interviews.</p>
+    </div>
+
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps">
+    <h2>How It Works</h2>
+
+    <div class="step-box">
+      <div class="step-number">1</div>
+      <div>
+        <h4>Create Account</h4>
+        <p>Sign up and select your job role.</p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-number">2</div>
+      <div>
+        <h4>Start Interview</h4>
+        <p>Answer AI-generated questions.</p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-number">3</div>
+      <div>
+        <h4>Instant Feedback</h4>
+        <p>Receive score and improvement tips.</p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-number">4</div>
+      <div>
+        <h4>Practice Again</h4>
+        <p>Improve until you feel confident.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Start Your AI Mock Interview Today</h2>
+  <button onclick="location.href='signup.html'">Get Started</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 AI Mock Interview. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("themeToggle").onclick = () => {
+  document.body.classList.toggle("dark");
+};
+</script>
+
+</body>
+</html>
