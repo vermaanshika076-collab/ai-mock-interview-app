@@ -1,0 +1,2156 @@
+{
+  "users": [
+    {
+      "id": "u_1772031247020",
+      "name": "Roshani",
+      "email": "roshanisarki522@gmail.com",
+      "password": "$2a$10$HDGCA0U7uPI1pU4/6IVJDu4ZFdt6APoKY77dwBTdALGKGUAE1sdzm",
+      "created_at": "2026-02-25T14:54:07.197Z"
+    },
+    {
+      "id": "u_1772690462816",
+      "name": "Anshika Verma",
+      "email": "vermaanhika076@gmail.com",
+      "password": "$2a$10$fZhOBOLjoSYqhO.tCdO0..Xm5SLtQvb9mbNt7wqEpBnAWDaJGIr/e",
+      "created_at": "2026-03-05T06:01:02.996Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "s_1772032192629",
+      "userId": "u_1772031247020",
+      "role": "Backend Developer",
+      "domain": "Web Development",
+      "round": "technical",
+      "avgScore": 5,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "Which HTTP method is used to update a resource in REST?",
+          "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is SQL injection?",
+          "options": [
+            "A way to speed up queries",
+            "Malicious SQL inserted into inputs",
+            "A database backup method",
+            "A query optimization technique"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What does ORM stand for?",
+          "options": [
+            "Object Relational Mapping",
+            "Open Resource Management",
+            "Optimized Routing Module",
+            "Object Rendering Method"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Which status code means 'Not Found'?",
+          "options": [
+            "200",
+            "401",
+            "404",
+            "500"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is middleware in Express.js?",
+          "options": [
+            "A database driver",
+            "Functions that execute between request and response",
+            "A frontend framework",
+            "A caching mechanism"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Which database is NoSQL?",
+          "options": [
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "SQLite"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What does JWT stand for?",
+          "options": [
+            "Java Web Token",
+            "JSON Web Token",
+            "JavaScript Web Transfer",
+            "JSON Widget Token"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of bcrypt?",
+          "options": [
+            "Speed up API responses",
+            "Hash passwords securely",
+            "Compress database files",
+            "Encrypt HTTP traffic"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does ACID stand for in databases?",
+          "options": [
+            "Atomicity Consistency Isolation Durability",
+            "Advanced Consistent Indexed Data",
+            "Automated Cache Integrity Database",
+            "Atomic Compiled Indexed Durability"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Which command installs a Node.js package?",
+          "options": [
+            "node install",
+            "npm install",
+            "pip install",
+            "apt install"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        }
+      ],
+      "date": "2026-02-25T15:09:52.629Z"
+    },
+    {
+      "id": "s_1772034610600",
+      "userId": "u_1772031247020",
+      "role": "Data Scientist",
+      "domain": "Data Science",
+      "round": "Aptitude",
+      "avgScore": 4,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "Model performs well on all data",
+            "Model memorizes training data but fails on new data",
+            "Model is too simple",
+            "Model uses too little data"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is cross-validation used for?",
+          "options": [
+            "Validating user login",
+            "Assessing how a model generalizes to new data",
+            "Comparing database tables",
+            "Encrypting model weights"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What does precision measure in classification?",
+          "options": [
+            "Percentage of actual positives correctly identified",
+            "Percentage of predicted positives that are actually positive",
+            "Overall accuracy",
+            "Model speed"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is feature engineering?",
+          "options": [
+            "Building hardware features",
+            "Creating new input variables from raw data",
+            "Designing neural networks",
+            "Writing SQL queries"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is regularization used for?",
+          "options": [
+            "Speed up training",
+            "Prevent overfitting by penalizing large weights",
+            "Increase model accuracy on training data",
+            "Visualize data"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What does PCA stand for?",
+          "options": [
+            "Principal Component Analysis",
+            "Primary Classification Algorithm",
+            "Predictive Computation Analysis",
+            "Parallel Computing Array"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the bias-variance tradeoff?",
+          "options": [
+            "Balance between model speed and accuracy",
+            "Balance between underfitting and overfitting",
+            "Balance between precision and recall",
+            "Balance between train and test size"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "Which algorithm is used for classification?",
+          "options": [
+            "K-means",
+            "Linear regression",
+            "Random Forest",
+            "PCA"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is gradient descent?",
+          "options": [
+            "A data cleaning method",
+            "An optimization algorithm that minimizes loss",
+            "A type of neural network",
+            "A feature selection method"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a confusion matrix?",
+          "options": [
+            "A table showing true vs predicted classifications",
+            "A type of chart",
+            "A neural network layer",
+            "A database schema"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "date": "2026-02-25T15:50:10.601Z"
+    },
+    {
+      "id": "s_1772035257607",
+      "userId": "u_1772031247020",
+      "role": "Data Scientist",
+      "domain": "Data Science",
+      "round": "Aptitude",
+      "avgScore": 2,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "Model performs well on all data",
+            "Model memorizes training data but fails on new data",
+            "Model is too simple",
+            "Model uses too little data"
+          ],
+          "selected": -1,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is cross-validation used for?",
+          "options": [
+            "Validating user login",
+            "Assessing how a model generalizes to new data",
+            "Comparing database tables",
+            "Encrypting model weights"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What does precision measure in classification?",
+          "options": [
+            "Percentage of actual positives correctly identified",
+            "Percentage of predicted positives that are actually positive",
+            "Overall accuracy",
+            "Model speed"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is feature engineering?",
+          "options": [
+            "Building hardware features",
+            "Creating new input variables from raw data",
+            "Designing neural networks",
+            "Writing SQL queries"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is regularization used for?",
+          "options": [
+            "Speed up training",
+            "Prevent overfitting by penalizing large weights",
+            "Increase model accuracy on training data",
+            "Visualize data"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does PCA stand for?",
+          "options": [
+            "Principal Component Analysis",
+            "Primary Classification Algorithm",
+            "Predictive Computation Analysis",
+            "Parallel Computing Array"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the bias-variance tradeoff?",
+          "options": [
+            "Balance between model speed and accuracy",
+            "Balance between underfitting and overfitting",
+            "Balance between precision and recall",
+            "Balance between train and test size"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Which algorithm is used for classification?",
+          "options": [
+            "K-means",
+            "Linear regression",
+            "Random Forest",
+            "PCA"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is gradient descent?",
+          "options": [
+            "A data cleaning method",
+            "An optimization algorithm that minimizes loss",
+            "A type of neural network",
+            "A feature selection method"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a confusion matrix?",
+          "options": [
+            "A table showing true vs predicted classifications",
+            "A type of chart",
+            "A neural network layer",
+            "A database schema"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "date": "2026-02-25T16:00:57.607Z"
+    },
+    {
+      "id": "s_1772038234306",
+      "userId": "u_1772031247020",
+      "role": "ML Engineer",
+      "domain": "Data Science",
+      "round": "Aptitude",
+      "avgScore": 5,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is model drift?",
+          "options": [
+            "Model moving to server",
+            "Model performance degrades over time",
+            "Type of overfitting",
+            "Model retraining"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does MLOps stand for?",
+          "options": [
+            "Machine Learning Operations",
+            "Multi-Layer Operations",
+            "Model Logic Optimization",
+            "Machine Language Output"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is batch inference?",
+          "options": [
+            "Real-time prediction",
+            "Predictions on large datasets at once",
+            "Training in batches",
+            "Validating outputs"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What will this output?",
+          "options": [
+            "<class 'list'>",
+            "<class 'tuple'>",
+            "<class 'array'>",
+            "Error"
+          ],
+          "selected": 0,
+          "correct": 0,
+          "isCorrect": true
+        },
+        {
+          "question": "Time complexity of binary search:",
+          "options": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n²)"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "Which tool versions ML models?",
+          "options": [
+            "Docker",
+            "MLflow",
+            "Kubernetes",
+            "Redis"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is A/B testing in ML?",
+          "options": [
+            "Testing two datasets",
+            "Comparing two models",
+            "Data cleaning",
+            "Regularization"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does this return?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "Error"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is containerization for ML?",
+          "options": [
+            "Storing data",
+            "Packaging app with dependencies",
+            "Database backup",
+            "Model compression"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of model monitoring?",
+          "options": [
+            "Train model",
+            "Track performance in production",
+            "Clean data",
+            "Visualize features"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        }
+      ],
+      "date": "2026-02-25T16:50:34.306Z"
+    },
+    {
+      "id": "s_1772038308138",
+      "userId": "u_1772031247020",
+      "role": "ML Engineer",
+      "domain": "Data Science",
+      "round": "technical",
+      "avgScore": 2,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is model drift?",
+          "options": [
+            "Model moving to server",
+            "Model performance degrades over time",
+            "Type of overfitting",
+            "Model retraining"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does MLOps stand for?",
+          "options": [
+            "Machine Learning Operations",
+            "Multi-Layer Operations",
+            "Model Logic Optimization",
+            "Machine Language Output"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is batch inference?",
+          "options": [
+            "Real-time prediction",
+            "Predictions on large datasets at once",
+            "Training in batches",
+            "Validating outputs"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What will this output?",
+          "options": [
+            "<class 'list'>",
+            "<class 'tuple'>",
+            "<class 'array'>",
+            "Error"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Time complexity of binary search:",
+          "options": [
+            "O(1)",
+            "O(n)",
+            "O(log n)",
+            "O(n²)"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "Which tool versions ML models?",
+          "options": [
+            "Docker",
+            "MLflow",
+            "Kubernetes",
+            "Redis"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is A/B testing in ML?",
+          "options": [
+            "Testing two datasets",
+            "Comparing two models",
+            "Data cleaning",
+            "Regularization"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does this return?",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "Error"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is containerization for ML?",
+          "options": [
+            "Storing data",
+            "Packaging app with dependencies",
+            "Database backup",
+            "Model compression"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of model monitoring?",
+          "options": [
+            "Train model",
+            "Track performance in production",
+            "Clean data",
+            "Visualize features"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        }
+      ],
+      "date": "2026-02-25T16:51:48.138Z"
+    },
+    {
+      "id": "s_1772081077151",
+      "userId": "u_1772031247020",
+      "role": "Data Scientist",
+      "domain": "Data Science",
+      "round": "aptitude",
+      "avgScore": 3,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "Model performs well on all data",
+            "Model memorizes training data but fails on new data",
+            "Model is too simple",
+            "Model uses too little data"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is cross-validation used for?",
+          "options": [
+            "Validating user login",
+            "Assessing how a model generalizes to new data",
+            "Comparing database tables",
+            "Encrypting model weights"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What does precision measure in classification?",
+          "options": [
+            "Percentage of actual positives correctly identified",
+            "Percentage of predicted positives that are actually positive",
+            "Overall accuracy",
+            "Model speed"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is feature engineering?",
+          "options": [
+            "Building hardware features",
+            "Creating new input variables from raw data",
+            "Designing neural networks",
+            "Writing SQL queries"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is regularization used for?",
+          "options": [
+            "Speed up training",
+            "Prevent overfitting by penalizing large weights",
+            "Increase model accuracy on training data",
+            "Visualize data"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What does PCA stand for?",
+          "options": [
+            "Principal Component Analysis",
+            "Primary Classification Algorithm",
+            "Predictive Computation Analysis",
+            "Parallel Computing Array"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the bias-variance tradeoff?",
+          "options": [
+            "Balance between model speed and accuracy",
+            "Balance between underfitting and overfitting",
+            "Balance between precision and recall",
+            "Balance between train and test size"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Which algorithm is used for classification?",
+          "options": [
+            "K-means",
+            "Linear regression",
+            "Random Forest",
+            "PCA"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is gradient descent?",
+          "options": [
+            "A data cleaning method",
+            "An optimization algorithm that minimizes loss",
+            "A type of neural network",
+            "A feature selection method"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a confusion matrix?",
+          "options": [
+            "A table showing true vs predicted classifications",
+            "A type of chart",
+            "A neural network layer",
+            "A database schema"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "date": "2026-02-26T04:44:37.151Z"
+    },
+    {
+      "id": "s_1772440203124",
+      "userId": "u_1772031247020",
+      "role": "Backend Developer",
+      "domain": "Web Development",
+      "round": "Technical",
+      "mcqScore": 0,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is REST API?",
+          "options": [
+            "Representational State Transfer",
+            "Remote Execution State Transfer",
+            "Resource Execution Standard Transfer",
+            "None"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is database normalization?",
+          "options": [
+            "Organizing data to reduce redundancy",
+            "Encrypting data",
+            "Backing up data",
+            "Deleting data"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What does ACID stand for?",
+          "options": [
+            "Atomicity Consistency Isolation Durability",
+            "Advanced Cache Integrity Database",
+            "Automated Compiled Indexed Data",
+            "None"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is middleware in Express?",
+          "options": [
+            "A database",
+            "Functions between request and response",
+            "A frontend framework",
+            "A testing tool"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of indexing in databases?",
+          "options": [
+            "Organize files",
+            "Speed up data retrieval",
+            "Encrypt data",
+            "Backup data"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is JWT used for?",
+          "options": [
+            "Authentication tokens",
+            "Database queries",
+            "Styling",
+            "Testing"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of bcrypt?",
+          "options": [
+            "Speed up queries",
+            "Hash passwords securely",
+            "Compress files",
+            "Encrypt traffic"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a foreign key?",
+          "options": [
+            "Primary key in another table",
+            "Link between tables",
+            "Both A and B",
+            "None"
+          ],
+          "selected": 1,
+          "correct": 2,
+          "isCorrect": false
+        },
+        {
+          "question": "What is caching?",
+          "options": [
+            "Storing frequently accessed data",
+            "Deleting old data",
+            "Encrypting data",
+            "Backing up data"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is API versioning?",
+          "options": [
+            "Managing different API versions",
+            "Deleting old APIs",
+            "Testing APIs",
+            "Styling APIs"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-02T08:30:03.124Z"
+    },
+    {
+      "id": "s_1772619310340",
+      "userId": "u_1772031247020",
+      "role": "Frontend Developer",
+      "domain": "Web Development",
+      "round": "aptitude",
+      "mcqScore": 2,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is the box model in CSS?",
+          "options": [
+            "Margin, Border, Padding, Content",
+            "Only padding and margin",
+            "Border and content only",
+            "Margin only"
+          ],
+          "selected": 0,
+          "correct": 0,
+          "isCorrect": true
+        },
+        {
+          "question": "What does DOM stand for?",
+          "options": [
+            "Document Object Model",
+            "Data Object Management",
+            "Digital Optimization Method",
+            "Document Orientation Mode"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Which HTTP method is idempotent?",
+          "options": [
+            "POST",
+            "PUT",
+            "PATCH",
+            "All of the above"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is React's Virtual DOM?",
+          "options": [
+            "A copy of the real DOM",
+            "A faster version of DOM",
+            "In-memory representation that syncs with real DOM",
+            "A database"
+          ],
+          "selected": 1,
+          "correct": 2,
+          "isCorrect": false
+        },
+        {
+          "question": "What is semantic HTML?",
+          "options": [
+            "HTML with meaning",
+            "HTML with styling",
+            "HTML with JavaScript",
+            "HTML without tags"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is CORS used for?",
+          "options": [
+            "Cross-Origin Resource Sharing",
+            "Cross-Object Rendering System",
+            "Client-Origin Request Standard",
+            "Content Origin Resource Sharing"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is event delegation?",
+          "options": [
+            "Assigning events to child elements",
+            "Using parent element to handle child events",
+            "Removing events",
+            "Creating custom events"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of meta tags?",
+          "options": [
+            "Styling",
+            "Provide metadata about HTML document",
+            "Run JavaScript",
+            "Create links"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is responsive design?",
+          "options": [
+            "Design that responds to clicks",
+            "Design that adapts to screen sizes",
+            "Design with animations",
+            "Design with colors"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of webpack?",
+          "options": [
+            "Create websites",
+            "Bundle JavaScript modules",
+            "Style CSS",
+            "Run tests"
+          ],
+          "selected": 3,
+          "correct": 1,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-04T10:15:10.340Z"
+    },
+    {
+      "id": "s_1772619374072",
+      "userId": "u_1772031247020",
+      "role": "Frontend Developer",
+      "domain": "Web Development",
+      "round": "technical",
+      "mcqScore": 2,
+      "codingScore": 8,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "Time complexity of binary search?",
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "Which data structure uses LIFO?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is recursion?",
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is Big O notation?",
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a hash table?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Write a function to reverse a string",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n3dghtugjolrfkle",
+          "score": 8,
+          "feedback": "Good solution! Code structure looks solid."
+        },
+        {
+          "question": "Create a function that checks if a number is even",
+          "code": "// Write your solution here\nfunction solution() {fjirgjkfl;\nfo;okf\nkoefl\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution! Code structure looks solid."
+        },
+        {
+          "question": "Write a function to find the largest number in an array",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\ngrkgoeflef,;d;,v",
+          "score": 8,
+          "feedback": "Good solution! Code structure looks solid."
+        },
+        {
+          "question": "Create a function to count vowels in a string",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}grmkgmrkg,;\n",
+          "score": 8,
+          "feedback": "Good solution! Code structure looks solid."
+        },
+        {
+          "question": "Create a function to count vowels in a string",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}grmkgmrkg,;\n",
+          "score": 8,
+          "feedback": "Good solution! Code structure looks solid."
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-04T10:16:14.072Z"
+    },
+    {
+      "id": "s_1772619625949",
+      "userId": "u_1772031247020",
+      "role": "Backend Developer",
+      "domain": "Web Development",
+      "round": "aptitude",
+      "mcqScore": 4,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is REST API?",
+          "options": [
+            "Representational State Transfer",
+            "Remote Execution State Transfer",
+            "Resource Execution Standard Transfer",
+            "None"
+          ],
+          "selected": 0,
+          "correct": 0,
+          "isCorrect": true
+        },
+        {
+          "question": "What is database normalization?",
+          "options": [
+            "Organizing data to reduce redundancy",
+            "Encrypting data",
+            "Backing up data",
+            "Deleting data"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What does ACID stand for?",
+          "options": [
+            "Atomicity Consistency Isolation Durability",
+            "Advanced Cache Integrity Database",
+            "Automated Compiled Indexed Data",
+            "None"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is middleware in Express?",
+          "options": [
+            "A database",
+            "Functions between request and response",
+            "A frontend framework",
+            "A testing tool"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is the purpose of indexing in databases?",
+          "options": [
+            "Organize files",
+            "Speed up data retrieval",
+            "Encrypt data",
+            "Backup data"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is JWT used for?",
+          "options": [
+            "Authentication tokens",
+            "Database queries",
+            "Styling",
+            "Testing"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of bcrypt?",
+          "options": [
+            "Speed up queries",
+            "Hash passwords securely",
+            "Compress files",
+            "Encrypt traffic"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a foreign key?",
+          "options": [
+            "Primary key in another table",
+            "Link between tables",
+            "Both A and B",
+            "None"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is caching?",
+          "options": [
+            "Storing frequently accessed data",
+            "Deleting old data",
+            "Encrypting data",
+            "Backing up data"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is API versioning?",
+          "options": [
+            "Managing different API versions",
+            "Deleting old APIs",
+            "Testing APIs",
+            "Styling APIs"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-04T10:20:25.949Z"
+    },
+    {
+      "id": "s_1772620327030",
+      "userId": "u_1772031247020",
+      "role": "Backend Developer",
+      "domain": "Web Development",
+      "round": "aptitude",
+      "mcqScore": 0,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is REST API?",
+          "options": [
+            "Representational State Transfer",
+            "Remote Execution State Transfer",
+            "Resource Execution Standard Transfer",
+            "None"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is database normalization?",
+          "options": [
+            "Organizing data to reduce redundancy",
+            "Encrypting data",
+            "Backing up data",
+            "Deleting data"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What does ACID stand for?",
+          "options": [
+            "Atomicity Consistency Isolation Durability",
+            "Advanced Cache Integrity Database",
+            "Automated Compiled Indexed Data",
+            "None"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is middleware in Express?",
+          "options": [
+            "A database",
+            "Functions between request and response",
+            "A frontend framework",
+            "A testing tool"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of indexing in databases?",
+          "options": [
+            "Organize files",
+            "Speed up data retrieval",
+            "Encrypt data",
+            "Backup data"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is JWT used for?",
+          "options": [
+            "Authentication tokens",
+            "Database queries",
+            "Styling",
+            "Testing"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is the purpose of bcrypt?",
+          "options": [
+            "Speed up queries",
+            "Hash passwords securely",
+            "Compress files",
+            "Encrypt traffic"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a foreign key?",
+          "options": [
+            "Primary key in another table",
+            "Link between tables",
+            "Both A and B",
+            "None"
+          ],
+          "selected": 1,
+          "correct": 2,
+          "isCorrect": false
+        },
+        {
+          "question": "What is caching?",
+          "options": [
+            "Storing frequently accessed data",
+            "Deleting old data",
+            "Encrypting data",
+            "Backing up data"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is API versioning?",
+          "options": [
+            "Managing different API versions",
+            "Deleting old APIs",
+            "Testing APIs",
+            "Styling APIs"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-04T10:32:07.030Z"
+    },
+    {
+      "id": "s_1772636579774",
+      "userId": "u_1772031247020",
+      "role": "Full Stack Developer",
+      "domain": "Web Development",
+      "round": "aptitude",
+      "avgScore": 4,
+      "mcqScore": 4,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is the box model in CSS?",
+          "options": [
+            "Margin, Border, Padding, Content",
+            "Only padding and margin",
+            "Border and content only",
+            "Margin only"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What does DOM stand for?",
+          "options": [
+            "Document Object Model",
+            "Data Object Management",
+            "Digital Optimization Method",
+            "Document Orientation Mode"
+          ],
+          "selected": 3,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Which HTTP method is idempotent?",
+          "options": [
+            "POST",
+            "PUT",
+            "PATCH",
+            "All of the above"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is React's Virtual DOM?",
+          "options": [
+            "A copy of the real DOM",
+            "A faster version of DOM",
+            "In-memory representation that syncs with real DOM",
+            "A database"
+          ],
+          "selected": 2,
+          "correct": 2,
+          "isCorrect": true
+        },
+        {
+          "question": "What is semantic HTML?",
+          "options": [
+            "HTML with meaning",
+            "HTML with styling",
+            "HTML with JavaScript",
+            "HTML without tags"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is CORS used for?",
+          "options": [
+            "Cross-Origin Resource Sharing",
+            "Cross-Object Rendering System",
+            "Client-Origin Request Standard",
+            "Content Origin Resource Sharing"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is event delegation?",
+          "options": [
+            "Assigning events to child elements",
+            "Using parent element to handle child events",
+            "Removing events",
+            "Creating custom events"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is the purpose of meta tags?",
+          "options": [
+            "Styling",
+            "Provide metadata about HTML document",
+            "Run JavaScript",
+            "Create links"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is responsive design?",
+          "options": [
+            "Design that responds to clicks",
+            "Design that adapts to screen sizes",
+            "Design with animations",
+            "Design with colors"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is the purpose of webpack?",
+          "options": [
+            "Create websites",
+            "Bundle JavaScript modules",
+            "Style CSS",
+            "Run tests"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-04T15:02:59.774Z"
+    },
+    {
+      "id": "s_1772690521892",
+      "userId": "u_1772690462816",
+      "role": "Machine Learning Engineer",
+      "domain": "AI & ML",
+      "round": "aptitude",
+      "avgScore": 3,
+      "mcqScore": 3,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is the box model in CSS?",
+          "options": [
+            "Margin, Border, Padding, Content",
+            "Only padding and margin",
+            "Border and content only",
+            "Margin only"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What does DOM stand for?",
+          "options": [
+            "Document Object Model",
+            "Data Object Management",
+            "Digital Optimization Method",
+            "Document Orientation Mode"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "Which HTTP method is idempotent?",
+          "options": [
+            "POST",
+            "PUT",
+            "PATCH",
+            "All of the above"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is React's Virtual DOM?",
+          "options": [
+            "A copy of the real DOM",
+            "A faster version of DOM",
+            "In-memory representation that syncs with real DOM",
+            "A database"
+          ],
+          "selected": 1,
+          "correct": 2,
+          "isCorrect": false
+        },
+        {
+          "question": "What is semantic HTML?",
+          "options": [
+            "HTML with meaning",
+            "HTML with styling",
+            "HTML with JavaScript",
+            "HTML without tags"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is CORS used for?",
+          "options": [
+            "Cross-Origin Resource Sharing",
+            "Cross-Object Rendering System",
+            "Client-Origin Request Standard",
+            "Content Origin Resource Sharing"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is event delegation?",
+          "options": [
+            "Assigning events to child elements",
+            "Using parent element to handle child events",
+            "Removing events",
+            "Creating custom events"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is the purpose of meta tags?",
+          "options": [
+            "Styling",
+            "Provide metadata about HTML document",
+            "Run JavaScript",
+            "Create links"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is responsive design?",
+          "options": [
+            "Design that responds to clicks",
+            "Design that adapts to screen sizes",
+            "Design with animations",
+            "Design with colors"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true
+        },
+        {
+          "question": "What is the purpose of webpack?",
+          "options": [
+            "Create websites",
+            "Bundle JavaScript modules",
+            "Style CSS",
+            "Run tests"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-05T06:02:01.892Z"
+    },
+    {
+      "id": "s_1772690559212",
+      "userId": "u_1772690462816",
+      "role": "Machine Learning Engineer",
+      "domain": "AI & ML",
+      "round": "technical",
+      "avgScore": 4,
+      "mcqScore": 0,
+      "codingScore": 8,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "Time complexity of binary search?",
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Which data structure uses LIFO?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is recursion?",
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is Big O notation?",
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a hash table?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Write a function to reverse a string",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}gjhbnirgjpofkwqefk\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Create a function that checks if a number is even",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to find the largest number in an array",
+          "code": "ljrjeigjirgik// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to find the largest number in an array",
+          "code": "ljrjeigjirgik// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to remove duplicates from an array",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to remove duplicates from an array",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-05T06:02:39.212Z"
+    },
+    {
+      "id": "s_1772690560401",
+      "userId": "u_1772690462816",
+      "role": "Machine Learning Engineer",
+      "domain": "AI & ML",
+      "round": "technical",
+      "avgScore": 4,
+      "mcqScore": 0,
+      "codingScore": 8,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "Time complexity of binary search?",
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Which data structure uses LIFO?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "What is recursion?",
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is Big O notation?",
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false
+        },
+        {
+          "question": "What is a hash table?",
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false
+        },
+        {
+          "question": "Write a function to reverse a string",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}gjhbnirgjpofkwqefk\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Create a function that checks if a number is even",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to find the largest number in an array",
+          "code": "ljrjeigjirgik// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to find the largest number in an array",
+          "code": "ljrjeigjirgik// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to remove duplicates from an array",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        },
+        {
+          "question": "Write a function to remove duplicates from an array",
+          "code": "// Write your solution here\nfunction solution() {\n  \n}\n",
+          "score": 8,
+          "feedback": "Good solution!"
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-05T06:02:40.402Z"
+    },
+    {
+      "id": "s_1772690741792",
+      "userId": "u_1772690462816",
+      "role": "ML Engineer",
+      "domain": "Data Science",
+      "round": "aptitude",
+      "avgScore": 1,
+      "mcqScore": 1,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is the box model in CSS?",
+          "options": [
+            "Margin, Border, Padding, Content",
+            "Only padding and margin",
+            "Border and content only",
+            "Margin only"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What does DOM stand for?",
+          "options": [
+            "Document Object Model",
+            "Data Object Management",
+            "Digital Optimization Method",
+            "Document Orientation Mode"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "Which HTTP method is idempotent?",
+          "options": [
+            "POST",
+            "PUT",
+            "PATCH",
+            "All of the above"
+          ],
+          "selected": 1,
+          "correct": 1,
+          "isCorrect": true,
+          "timedOut": false
+        },
+        {
+          "question": "What is React's Virtual DOM?",
+          "options": [
+            "A copy of the real DOM",
+            "A faster version of DOM",
+            "In-memory representation that syncs with real DOM",
+            "A database"
+          ],
+          "selected": 0,
+          "correct": 2,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is semantic HTML?",
+          "options": [
+            "HTML with meaning",
+            "HTML with styling",
+            "HTML with JavaScript",
+            "HTML without tags"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is CORS used for?",
+          "options": [
+            "Cross-Origin Resource Sharing",
+            "Cross-Object Rendering System",
+            "Client-Origin Request Standard",
+            "Content Origin Resource Sharing"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is event delegation?",
+          "options": [
+            "Assigning events to child elements",
+            "Using parent element to handle child events",
+            "Removing events",
+            "Creating custom events"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is the purpose of meta tags?",
+          "options": [
+            "Styling",
+            "Provide metadata about HTML document",
+            "Run JavaScript",
+            "Create links"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is responsive design?",
+          "options": [
+            "Design that responds to clicks",
+            "Design that adapts to screen sizes",
+            "Design with animations",
+            "Design with colors"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is the purpose of webpack?",
+          "options": [
+            "Create websites",
+            "Bundle JavaScript modules",
+            "Style CSS",
+            "Run tests"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-05T06:05:41.792Z"
+    },
+    {
+      "id": "s_1772691425433",
+      "userId": "u_1772031247020",
+      "role": "Machine Learning Engineer",
+      "domain": "AI & ML",
+      "round": "aptitude",
+      "avgScore": 0,
+      "mcqScore": 0,
+      "codingScore": 0,
+      "hrScore": 0,
+      "totalQuestions": 10,
+      "answers": [
+        {
+          "question": "What is the box model in CSS?",
+          "options": [
+            "Margin, Border, Padding, Content",
+            "Only padding and margin",
+            "Border and content only",
+            "Margin only"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What does DOM stand for?",
+          "options": [
+            "Document Object Model",
+            "Data Object Management",
+            "Digital Optimization Method",
+            "Document Orientation Mode"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "Which HTTP method is idempotent?",
+          "options": [
+            "POST",
+            "PUT",
+            "PATCH",
+            "All of the above"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is React's Virtual DOM?",
+          "options": [
+            "A copy of the real DOM",
+            "A faster version of DOM",
+            "In-memory representation that syncs with real DOM",
+            "A database"
+          ],
+          "selected": 0,
+          "correct": 2,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is semantic HTML?",
+          "options": [
+            "HTML with meaning",
+            "HTML with styling",
+            "HTML with JavaScript",
+            "HTML without tags"
+          ],
+          "selected": 1,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is CORS used for?",
+          "options": [
+            "Cross-Origin Resource Sharing",
+            "Cross-Object Rendering System",
+            "Client-Origin Request Standard",
+            "Content Origin Resource Sharing"
+          ],
+          "selected": 2,
+          "correct": 0,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is event delegation?",
+          "options": [
+            "Assigning events to child elements",
+            "Using parent element to handle child events",
+            "Removing events",
+            "Creating custom events"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is the purpose of meta tags?",
+          "options": [
+            "Styling",
+            "Provide metadata about HTML document",
+            "Run JavaScript",
+            "Create links"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is responsive design?",
+          "options": [
+            "Design that responds to clicks",
+            "Design that adapts to screen sizes",
+            "Design with animations",
+            "Design with colors"
+          ],
+          "selected": 2,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        },
+        {
+          "question": "What is the purpose of webpack?",
+          "options": [
+            "Create websites",
+            "Bundle JavaScript modules",
+            "Style CSS",
+            "Run tests"
+          ],
+          "selected": 0,
+          "correct": 1,
+          "isCorrect": false,
+          "timedOut": false
+        }
+      ],
+      "cheatingFlags": [],
+      "date": "2026-03-05T06:17:05.433Z"
+    }
+  ],
+  "answers": []
+}
